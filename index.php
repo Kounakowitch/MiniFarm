@@ -11,13 +11,13 @@
 
 <header class="main-header">
     <div class="logo">
-        <h1>AgriPro Dashboard</h1>
+        <h1>Mini Farm</h1>
     </div>
 
     <nav class="farm-nav">
         <a href="ferme1.php" class="nav-item">Ferme 1</a>
         <a href="ferme2.php" class="nav-item">Ferme 2</a>
-        <a href="ferme3.php" class="nav-item">Ferme 4</a>
+        <a href="ferme3.php" class="nav-item">Ferme 3</a>
         <a href="ferme4.php" class="nav-item">Ferme 4</a>
     </nav>
 </header>
@@ -48,22 +48,44 @@
                 <h3>Ferme 1 - Les Champs</h3>
                 <p>Statut Général : <span class="status good">Optimal</span></p>
                 <ul>
-                    <li><i class="fas fa-seedling"></i> Cultures : Blé, Orge</li>
+                    <li><i class="fas fa-seedling"></i> Cultures : Avoine, Blé, Orge</li>
                     <li><i class="fas fa-chart-line"></i> Tendance : Rendement Stable (+0.5%)</li>
                     <li><i class="fas fa-bolt"></i> Consommation Énergie : 45 kWh</li>
                 </ul>
                 <a href="ferme1.php" class="btn-detail">Accéder au Dashboard</a>
             </article>
 
-            <article class="farm-card">
-                <h3>Ferme 2 - Le Verger</h3>
+            <article class="farm-card status-2">
+                <h3>Ferme 2 - Les Pâtures</h3>
                 <p>Statut Général : <span class="status warning">Alerte Humidité</span></p>
                 <ul>
-                    <li><i class="fas fa-apple-alt"></i> Cultures : Pommiers, Poiriers</li>
+                    <li><i class="fas fa-leaf"></i> Cultures : Pâturage, Foin</li>
                     <li><i class="fas fa-chart-line"></i> Tendance : Légère Baisse (-1.2%)</li>
                     <li><i class="fas fa-wrench"></i> Maintenance Requise : Oui</li>
                 </ul>
                 <a href="ferme2.php" class="btn-detail warning-btn">Accéder au Dashboard</a>
+            </article>
+
+            <article class="farm-card status-3">
+                <h3>Ferme 3 - Le Potager</h3>
+                <p>Statut Général : <span class="status danger">Urgence Chaleur</span></p>
+                <ul>
+                    <li><i class="fas fa-carrot"></i> Cultures : Carottes, Tomates, Salades</li>
+                    <li><i class="fas fa-chart-area"></i> Tendance : Forte Baisse (-3.5%)</li>
+                    <li><i class="fas fa-fire"></i> Niveau d'Alarme : Élevé</li>
+                </ul>
+                <a href="ferme3.php" class="btn-detail danger-btn">Accéder au Dashboard</a>
+            </article>
+
+            <article class="farm-card status-4">
+                <h3>Ferme 4 - L'Étable</h3>
+                <p>Statut Général : <span class="status info">Maintenance Prévue</span></p>
+                <ul>
+                    <li><i class="fas fa-cow"></i> Élevage : Bovins, Volailles</li>
+                    <li><i class="fas fa-user-friends"></i> Personnel : 3 Présents</li>
+                    <li><i class="fas fa-truck"></i> Logistique : Livraison en attente</li>
+                </ul>
+                <a href="ferme4.php" class="btn-detail info-btn">Accéder au Dashboard</a>
             </article>
 
         </div>

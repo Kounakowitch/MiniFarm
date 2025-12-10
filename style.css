@@ -1,12 +1,10 @@
 /* =======================================================
    PALETTE DE COULEURS ET VARIABLES
-   -------------------------------------------------------
-   Beige Clair et Vert pour un look Naturel et Professionnel
    ======================================================= */
 :root {
     --color-bg-light: #FBF8F4;    /* Fond : Beige très clair (presque blanc cassé) */
-    --color-primary-green: #388E3C; /* Vert principal : Sophistiqué, pour accents et boutons */
-    --color-secondary-green: #81C784; /* Vert secondaire : Pour les icônes et bordures douces */
+    --color-primary-green: #388E3C; /* Vert principal : Sophistiqué */
+    --color-secondary-green: #81C784; /* Vert secondaire : Icônes douces */
     --color-text-dark: #333333;      /* Texte principal */
     --color-text-light: #666666;      /* Texte secondaire/doux */
     --color-card-bg: #FFFFFF;        /* Fond des cartes et du header */
@@ -14,7 +12,7 @@
 }
 
 /* =======================================================
-   RESET ET FOND DE PAGE
+   RESET ET BASE
    ======================================================= */
 * {
     box-sizing: border-box;
@@ -27,28 +25,25 @@ body {
     background-color: var(--color-bg-light);
     color: var(--color-text-dark);
     line-height: 1.6;
-    padding-top: 80px; /* Espace pour le header fixe */
+    padding-top: 80px;
 }
 
-/* Conteneur principal centré */
 .dashboard-container {
     max-width: 1400px;
     margin: 30px auto;
     padding: 0 30px;
 }
 
-/* Titres */
 h2 {
     color: var(--color-primary-green);
     margin-top: 40px;
     margin-bottom: 20px;
-    font-weight: 300; /* Mince et moderne */
+    font-weight: 300;
     font-size: 1.8em;
     padding-bottom: 5px;
     border-bottom: 1px solid var(--color-border);
 }
 
-/* Ligne de séparation */
 hr {
     border: none;
     border-top: 1px solid var(--color-border);
@@ -56,7 +51,7 @@ hr {
 }
 
 /* =======================================================
-   HEADER ET NAVIGATION (Très Professionnel)
+   HEADER ET NAVIGATION
    ======================================================= */
 .main-header {
     background-color: var(--color-card-bg);
@@ -70,7 +65,7 @@ hr {
     left: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Ombre douce */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .logo h1 {
@@ -96,17 +91,12 @@ hr {
 }
 
 .nav-item:hover {
-    background-color: #F0F0F0; /* Gris très clair au survol */
+    background-color: #F0F0F0;
     color: var(--color-primary-green);
 }
 
-.nav-item.active {
-    background-color: var(--color-primary-green);
-    color: var(--color-card-bg); /* Texte blanc/beige sur fond vert pour l'élément actif */
-}
-
 /* =======================================================
-   SECTION 1 : INDICATEURS LIVE DATA (Data Cards)
+   SECTION 1 : INDICATEURS LIVE DATA
    ======================================================= */
 .data-last-update {
     color: var(--color-text-light);
@@ -116,7 +106,6 @@ hr {
 
 .data-cards-grid {
     display: grid;
-    /* Ajustement auto-fit pour que les cartes s'empilent bien sur mobile */
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 25px;
     margin-bottom: 40px;
@@ -131,11 +120,11 @@ hr {
     flex-direction: column;
     text-align: left;
     transition: transform 0.2s;
-    border-left: 5px solid var(--color-primary-green); /* Bordure d'accentuation */
+    border-left: 5px solid var(--color-primary-green);
 }
 
 .data-card:hover {
-    transform: translateY(-3px); /* Effet moderne de survol */
+    transform: translateY(-3px);
 }
 
 .data-card i {
@@ -146,15 +135,18 @@ hr {
 
 .data-card span {
     display: block;
-    font-size: 2em; /* Grande taille pour la lisibilité */
+    font-size: 2em;
     font-weight: 700;
     color: var(--color-text-dark);
     line-height: 1;
 }
 
-.data-card:first-child { border-left-color: #FFC107; } /* Personnalisation des couleurs */
-.data-card:nth-child(2) { border-left-color: #2196F3; }
-.data-card:nth-child(3) { border-left-color: #F44336; }
+/* Personnalisation légère des couleurs des cartes de données */
+.data-card:first-child { border-left-color: #FFC107; } /* Température: Jaune */
+.data-card:nth-child(2) { border-left-color: #2196F3; } /* Humidité: Bleu */
+.data-card:nth-child(4) { border-left-color: #00BCD4; } /* Niveau d'eau: Cyan */
+.data-card:nth-child(5) { border-left-color: #FF9800; } /* Luminosité: Orange */
+
 
 /* =======================================================
    SECTION 2 : SYNTHÈSE DES FERMES (Farm Cards)
@@ -217,18 +209,23 @@ hr {
 }
 
 .status.good {
-    background-color: #e8f5e9; /* Vert très très clair */
+    background-color: #e8f5e9;
     color: #2e7d32;
 }
 
 .status.warning {
-    background-color: #fff3e0; /* Jaune/orange très clair */
+    background-color: #fff3e0;
     color: #ff8f00;
 }
 
 .status.danger {
-    background-color: #ffebee; /* Rouge très très clair */
+    background-color: #ffebee;
     color: #c62828;
+}
+
+.status.info {
+    background-color: #e3f2fd; /* Nouveau: Bleu très clair */
+    color: #1565c0; /* Nouveau: Bleu foncé */
 }
 
 /* --- Boutons --- */
@@ -248,13 +245,72 @@ hr {
 }
 
 .btn-detail:hover {
-    background-color: #2e7d32; /* Vert plus foncé au survol */
+    background-color: #2e7d32;
     transform: translateY(-1px);
 }
 
+/* Boutons spécifiques aux alertes */
 .warning-btn {
-    background-color: #FFB300; /* Bouton orange pour les alertes */
+    background-color: #FFB300;
 }
 .warning-btn:hover {
     background-color: #FF8F00;
+}
+.danger-btn {
+    background-color: #d32f2f; /* Rouge vif pour l'urgence */
+}
+.danger-btn:hover {
+    background-color: #b71c1c;
+}
+.info-btn {
+    background-color: #1976d2; /* Bleu standard */
+}
+.info-btn:hover {
+    background-color: #1565c0;
+}
+
+
+/* =======================================================
+   PERSONNALISATION PAR FERME (Pour le style)
+   ======================================================= */
+
+/* Ferme 2 : Pâtures (Jaune/Orange) */
+.farm-card.status-2 h3 {
+    color: #FFA000;
+    border-bottom: 2px solid #FFECB3;
+}
+.farm-card.status-2 ul li i {
+    color: #FFC107;
+}
+
+/* Ferme 3 : Potager (Rouge/Alerte) */
+.farm-card.status-3 {
+    border: 1px solid #FFCDD2;
+}
+.farm-card.status-3 h3 {
+    color: #D32F2F;
+    border-bottom: 2px solid #FFCDD2;
+}
+.farm-card.status-3 ul li i {
+    color: #EF5350;
+}
+
+/* Ferme 4 : Étable (Bleu/Gris) */
+.farm-card.status-4 h3 {
+    color: #1976D2;
+    border-bottom: 2px solid #BBDEFB;
+}
+.farm-card.status-4 ul li i {
+    color: #42A5F5;
+}
+
+/* Icônes spécifiques pour plus de clarté */
+.farm-card ul li i.fa-leaf {
+    color: #8BC34A;
+}
+.farm-card ul li i.fa-cow {
+    color: #795548;
+}
+.farm-card ul li i.fa-carrot {
+    color: #FF8F00;
 }
