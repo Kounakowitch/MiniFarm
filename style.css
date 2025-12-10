@@ -1,68 +1,260 @@
+/* =======================================================
+   PALETTE DE COULEURS ET VARIABLES
+   -------------------------------------------------------
+   Beige Clair et Vert pour un look Naturel et Professionnel
+   ======================================================= */
+:root {
+    --color-bg-light: #FBF8F4;    /* Fond : Beige très clair (presque blanc cassé) */
+    --color-primary-green: #388E3C; /* Vert principal : Sophistiqué, pour accents et boutons */
+    --color-secondary-green: #81C784; /* Vert secondaire : Pour les icônes et bordures douces */
+    --color-text-dark: #333333;      /* Texte principal */
+    --color-text-light: #666666;      /* Texte secondaire/doux */
+    --color-card-bg: #FFFFFF;        /* Fond des cartes et du header */
+    --color-border: #E0E0E0;      /* Bordures très légères */
+}
+
+/* =======================================================
+   RESET ET FOND DE PAGE
+   ======================================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f4f6f8;
-    color: #333;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-bg-light);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    padding-top: 80px; /* Espace pour le header fixe */
 }
 
-header {
-    background: #2c3e50;
-    color: white;
-    padding: 1rem 0;
+/* Conteneur principal centré */
+.dashboard-container {
+    max-width: 1400px;
+    margin: 30px auto;
+    padding: 0 30px;
 }
 
-nav ul.fermes-menu {
-    list-style: none;
+/* Titres */
+h2 {
+    color: var(--color-primary-green);
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-weight: 300; /* Mince et moderne */
+    font-size: 1.8em;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Ligne de séparation */
+hr {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 40px 0;
+}
+
+/* =======================================================
+   HEADER ET NAVIGATION (Très Professionnel)
+   ======================================================= */
+.main-header {
+    background-color: var(--color-card-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding: 10px 30px;
     display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Ombre douce */
 }
 
-nav ul.fermes-menu li a {
-    color: white;
+.logo h1 {
+    color: var(--color-primary-green);
+    font-size: 1.6em;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.farm-nav {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-item {
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
+    color: var(--color-text-light);
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.95em;
 }
 
-nav ul.fermes-menu li a:hover {
-    color: #1abc9c;
+.nav-item:hover {
+    background-color: #F0F0F0; /* Gris très clair au survol */
+    color: var(--color-primary-green);
 }
 
-main {
-    padding: 2rem;
+.nav-item.active {
+    background-color: var(--color-primary-green);
+    color: var(--color-card-bg); /* Texte blanc/beige sur fond vert pour l'élément actif */
 }
 
-.dashboard .ferme-cards {
+/* =======================================================
+   SECTION 1 : INDICATEURS LIVE DATA (Data Cards)
+   ======================================================= */
+.data-last-update {
+    color: var(--color-text-light);
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.data-cards-grid {
     display: grid;
+    /* Ajustement auto-fit pour que les cartes s'empilent bien sur mobile */
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 25px;
+    margin-bottom: 40px;
 }
 
-.card {
-    background: white;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+.data-card {
+    background-color: var(--color-card-bg);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    transition: transform 0.2s;
+    border-left: 5px solid var(--color-primary-green); /* Bordure d'accentuation */
 }
 
-.capteurs {
-    margin-top: 2rem;
+.data-card:hover {
+    transform: translateY(-3px); /* Effet moderne de survol */
 }
 
-.sensor-data p {
-    font-size: 1.2rem;
-    margin: 0.5rem 0;
+.data-card i {
+    font-size: 1.4em;
+    color: var(--color-secondary-green);
+    margin-bottom: 8px;
 }
 
-footer {
-    background: #2c3e50;
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: 2rem;
+.data-card span {
+    display: block;
+    font-size: 2em; /* Grande taille pour la lisibilité */
+    font-weight: 700;
+    color: var(--color-text-dark);
+    line-height: 1;
+}
+
+.data-card:first-child { border-left-color: #FFC107; } /* Personnalisation des couleurs */
+.data-card:nth-child(2) { border-left-color: #2196F3; }
+.data-card:nth-child(3) { border-left-color: #F44336; }
+
+/* =======================================================
+   SECTION 2 : SYNTHÈSE DES FERMES (Farm Cards)
+   ======================================================= */
+.farm-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.farm-card {
+    background-color: var(--color-card-bg);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--color-border);
+}
+
+.farm-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.farm-card h3 {
+    color: var(--color-primary-green);
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--color-secondary-green);
+    font-weight: 500;
+}
+
+.farm-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.farm-card ul li {
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    color: var(--color-text-light);
+}
+
+.farm-card ul li i {
+    color: var(--color-secondary-green);
+    margin-right: 12px;
+    font-size: 1.1em;
+}
+
+/* --- Indicateurs de Statut --- */
+.status {
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    text-transform: uppercase;
+}
+
+.status.good {
+    background-color: #e8f5e9; /* Vert très très clair */
+    color: #2e7d32;
+}
+
+.status.warning {
+    background-color: #fff3e0; /* Jaune/orange très clair */
+    color: #ff8f00;
+}
+
+.status.danger {
+    background-color: #ffebee; /* Rouge très très clair */
+    color: #c62828;
+}
+
+/* --- Boutons --- */
+.btn-detail {
+    display: inline-block;
+    background-color: var(--color-primary-green);
+    color: var(--color-card-bg);
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 6px;
+    margin-top: 15px;
+    transition: background-color 0.3s, transform 0.1s;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    border: none;
+}
+
+.btn-detail:hover {
+    background-color: #2e7d32; /* Vert plus foncé au survol */
+    transform: translateY(-1px);
+}
+
+.warning-btn {
+    background-color: #FFB300; /* Bouton orange pour les alertes */
+}
+.warning-btn:hover {
+    background-color: #FF8F00;
 }
