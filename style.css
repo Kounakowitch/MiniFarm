@@ -314,3 +314,182 @@ hr {
 .farm-card ul li i.fa-carrot {
     color: #FF8F00;
 }
+
+/* =======================================================
+   STYLES SPÉCIFIQUES À LA PAGE DE DÉTAIL (Contrôles Ferme 1)
+   ======================================================= */
+
+/* --- Grille des Contrôles et Logistique --- */
+.controls-grid, .logistics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.control-card, .progress-card {
+    background-color: var(--color-card-bg);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid var(--color-border);
+}
+
+.control-card h4 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--color-primary-green);
+}
+
+.control-card i {
+    margin-right: 8px;
+    color: var(--color-secondary-green);
+}
+
+/* --- Boutons d'Action --- */
+.btn-action {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    margin-top: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.green-btn {
+    background-color: var(--color-primary-green);
+    color: var(--color-card-bg);
+}
+.green-btn:hover:not(:disabled) {
+    background-color: #2e7d32;
+}
+.green-btn:disabled {
+    background-color: var(--color-border);
+    cursor: not-allowed;
+}
+
+/* --- Toggle Switch (ON/OFF) --- */
+.toggle-container {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.toggle-container span {
+    margin-left: 15px;
+    font-weight: 500;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: var(--color-primary-green);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+/* --- Alertes et Messages --- */
+.alert-message {
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    display: none; /* Caché par défaut, affiché par JS */
+}
+
+.warning-text {
+    background-color: #fff3e0;
+    color: #ff8f00;
+}
+.danger-text {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+/* Affichage de la température dans la carte de contrôle */
+.data-value {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    line-height: 1;
+    margin: 10px 0;
+}
+
+
+/* --- Progress Bar (Curseurs) --- */
+.progress-bar-container {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin: 10px 0;
+    height: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--color-primary-green);
+    transition: width 0.5s ease;
+}
+
+.progress-label {
+    margin-top: 10px;
+    color: var(--color-text-light);
+}
+
+/* Stock Bas : Danger */
+.progress-bar-container.stock-low .progress-bar {
+    background-color: #d32f2f; /* Rouge */
+}
+/* Stock Bas : Dégradé du vert au rouge */
+.progress-green-to-red {
+    background-image: linear-gradient(to right, #d32f2f 0%, #ffeb3b 50%, var(--color-primary-green) 100%);
+}
