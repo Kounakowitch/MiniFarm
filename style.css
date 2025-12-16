@@ -632,3 +632,40 @@ input:checked + .slider:before {
     width: 80%;
     font-size: 1em;
 }
+
+/* ... (À AJOUTER À LA FIN DE VOTRE FICHIER style.css) ... */
+
+/* Styles pour les champs de temps de planification */
+.time-input {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 15px 0;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+/* Styles pour les étiquettes de planification */
+.control-schedule label {
+    display: block;
+    font-size: 0.9em;
+    font-weight: 500;
+    color: var(--color-text-dark);
+}
+
+/* Styles pour les petits boutons (Réapprovisionnement) */
+.small-btn {
+    padding: 8px 15px;
+    font-size: 0.85em;
+}
+
+/* Nouveau statut d'information (pour les moutons dehors par exemple) */
+.status.info {
+    background-color: #e3f2fd; /* Bleu très clair */
+    color: #1565c0; /* Bleu foncé */
+}
+.alert-message.info-text {
+    background-color: #e3f2fd;
+    color: #1565c0;
+}
