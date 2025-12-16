@@ -1,9 +1,11 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "smartfarm");
+require_once("connexion_db.php");
 
-if ($conn->connect_error) {
-    die("Connexion échouée : " . $conn->connect_error);
+$result = $conn->query("SELECT * FROM sensor_data");
+
+while ($row = $result->fetch_assoc()) {
+    echo "<pre>";
+    print_r($row);
+    echo "</pre>";
 }
-
-echo "✅ Connecté à la base smartfarm";
 ?>
