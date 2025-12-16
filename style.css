@@ -493,3 +493,79 @@ input:checked + .slider:before {
 .progress-green-to-red {
     background-image: linear-gradient(to right, #d32f2f 0%, #ffeb3b 50%, var(--color-primary-green) 100%);
 }
+
+/* ... (votre code CSS existant) ... */
+
+/* =======================================================
+   HEADER ET NAVIGATION (Ajout style .active)
+   ======================================================= */
+/* ... (votre code existant pour .nav-item) ... */
+
+.nav-item.active {
+    background-color: var(--color-primary-green);
+    color: var(--color-card-bg);
+    /* Optionnel : pour donner un effet plus fort */
+    box-shadow: 0 4px 8px rgba(56, 142, 60, 0.4);
+    pointer-events: none; /* Désactive le clic sur la page active */
+}
+
+/* Évite l'effet hover sur l'élément actif */
+.nav-item.active:hover {
+    background-color: var(--color-primary-green);
+    color: var(--color-card-bg);
+}
+
+/* ... (votre code CSS existant) ... */
+
+/* =======================================================
+   STYLES SPÉCIFIQUES À LA PAGE DE DÉTAIL (Contrôles Ferme 1)
+   ======================================================= */
+/* ... (votre code existant pour .controls-grid, .logistics-grid, etc.) ... */
+
+
+/* =======================================================
+   GRAPHIQUES HISTORIQUES (Ajout/Modification pour taille réaliste)
+   ======================================================= */
+
+.historical-charts h3 {
+    margin-bottom: 25px;
+}
+
+/* Assure la disposition en deux colonnes */
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Min 400px pour un bon rendu */
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Fixe la hauteur maximale de chaque carte de graphique */
+.chart-card {
+    background-color: var(--color-card-bg);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--color-border);
+
+    /* L'ajustement clé pour la taille réaliste */
+    max-height: 280px;
+    height: 100%;
+}
+
+.chart-card h4 {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--color-text-dark);
+}
+
+/* Optionnel : Pour les petits écrans, revenir à une seule colonne */
+@media (max-width: 900px) {
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+    .chart-card {
+        max-height: 350px;
+    }
+}
