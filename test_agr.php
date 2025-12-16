@@ -1,9 +1,9 @@
 <?php
-require 'db.php';
+$conn = new mysqli("localhost", "root", "", "smartfarm");
 
-$stmt = $pdo->query("SELECT * FROM sensor_data ORDER BY timestamp DESC LIMIT 5");
-$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+if ($conn->connect_error) {
+    die("Connexion échouée : " . $conn->connect_error);
+}
 
-echo "<pre>";
-print_r($data);
-echo "</pre>";
+echo "✅ Connecté à la base smartfarm";
+?>
