@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- PARAMÈTRES ET SÉLECTEURS DU DOM ---
     const TOTAL_SHEEP = 45;
-    const HAY_MIN_STOCK = 30; // Seuil bas pour le foin (%)
-    const VEG_MIN_STOCK = 20; // Seuil bas pour les légumes (%)
+    const HAY_MIN_STOCK = 30;
+    const VEG_MIN_STOCK = 20;
 
-    // Alerte et Contrôles
+    // Contrôles
     const feedingToggle = document.getElementById('feeding-toggle');
     const trapStatus = document.getElementById('trap-status');
     const feedingAlertMsg = document.getElementById('feeding-alert-msg');
@@ -12,6 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const foodChoice = document.getElementById('food-choice');
     const nextMealTimeDisplay = document.getElementById('next-meal-time');
     const mealTypeDisplay = document.getElementById('meal-type');
+
+    // NOUVEAU: Contrôle Manuel de la Trappe
+    const trapToggle = document.getElementById('trap-toggle');
+    const trapModeLabel = document.getElementById('trap-mode-label');
 
     // Stocks et Réappro
     const hayStockProgress = document.getElementById('hay-stock-progress');
@@ -39,8 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         evening: { time: eveningFeedTimeInput.value, type: 'legumes' }
     };
 
-    // --- LOGIQUE INITIALE : CHARGEMENT DES HORAIRES ---
-    // En production, ces données viendraient d'une base de données ou du LocalStorage.
+    // Chargement des horaires
     const storedSchedule = localStorage.getItem('feedSchedule');
     if (storedSchedule) {
         feedSchedule = JSON.parse(storedSchedule);
@@ -51,7 +54,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 1. GESTION DE L'ALIMENTATION (Automatique/Manuelle) ---
 
+    // Fonction pour mettre à jour le statut de la trappe (utilisée par l'Automatique/Manuel)
     function updateTrapStatus(isOpen, mealType = null) {
+        // Si le mode manuel de la trappe est actif (et en position Ouverte), l'Automatique n'agit pas sur l'affichage.
+        if (trapToggle.checked) {
+            trapStatus.textContent = "Ouverte (Manuelle)";
+            trapStatus.className = "status warning";
+            feedingAlertMsg.innerHTML = `<i class="fas fa-info-circle"></i> Trappe **Ouverte Manuellement**. Fermez le mode manuel pour l'Auto.`;
+            feedingAlertMsg.className = 'alert-message warning-text';
+            return;
+        }
+
         if (isOpen) {
             trapStatus.textContent = "Ouverte";
             trapStatus.className = "status good";
@@ -65,13 +78,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Événement pour le contrôle manuel de la trappe (Commande prioritaire)
+    trapToggle.addEventListener('change', function() {
+        if (this.checked) {
+            // Checked = Ouverte Manuellement
+            trapModeLabel.textContent = "Mode Manuel : OUVERT";
+            updateTrapStatus(true, null); // Met à jour l'affichage avec l'état manuel
+        } else {
+            // Unchecked = Fermée Manuellement (ou état par défaut)
+            trapModeLabel.textContent = "Mode Manuel : FERMÉ";
+            // Si on ferme manuellement, on remet l'affichage à l'état fermé
+            trapStatus.textContent = "Fermée (Manuelle)";
+            trapStatus.className = "status danger";
+            feedingAlertMsg.innerHTML = `<i class="fas fa-lock"></i> Trappe **Fermée Manuellement**. Blocage de l'Automatique.`;
+            feedingAlertMsg.className = 'alert-message danger-text';
+        }
+    });
+
+    // Fonction de distribution
     function performFeeding(type) {
-        // Logique de distribution : Vérification du stock, envoi de la commande
+        // VÉRIFICATION PRIORITAIRE : Bloquer si la trappe est manuellement fermée
+        if (!trapToggle.checked && trapStatus.textContent.includes("Fermée (Manuelle)")) {
+            alert("ALERTE : La trappe de nourriture est VERROUILLÉE MANUELLEMENT. L'alimentation automatique est BLOQUÉE. Veuillez l'ouvrir ou désactiver le contrôle manuel.");
+            return; // Arrête la distribution
+        }
+
+        // DÉBUT DE LA DISTRIBUTION
         updateTrapStatus(true, type);
 
-        // Simulation de la durée de distribution
         manualFeedBtn.disabled = true;
         setTimeout(() => {
+            // FIN DE LA DISTRIBUTION
             updateTrapStatus(false);
             manualFeedBtn.disabled = false;
         }, 15000); // 15 secondes pour la simulation
@@ -151,10 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (hayPercent < HAY_MIN_STOCK) {
             hayWarning.style.display = 'block';
             hayWarning.innerHTML = `<i class="fas fa-exclamation-circle"></i> **STOCK BAS Foin !** Réapprovisionnement de F1 lancé (Auto).`;
-            // Logique de Réapprovisionnement Automatique
-            if (feedingToggle.checked) {
-                console.log("Ordre de réappro F1 automatique envoyé.");
-            }
         } else {
             hayWarning.style.display = 'none';
         }
@@ -167,10 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (vegPercent < VEG_MIN_STOCK) {
             vegWarning.style.display = 'block';
             vegWarning.innerHTML = `<i class="fas fa-exclamation-circle"></i> **STOCK BAS Légumes !** Réapprovisionnement de F3 lancé (Auto).`;
-            // Logique de Réapprovisionnement Automatique
-            if (feedingToggle.checked) {
-                console.log("Ordre de réappro F3 automatique envoyé.");
-            }
         } else {
             vegWarning.style.display = 'none';
         }
@@ -179,19 +208,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Boutons de réapprovisionnement manuel
     manualRestockHayBtn.addEventListener('click', () => {
         alert("Demande de Réapprovisionnement Foin (F1) envoyée manuellement.");
-        // Ici, on simulerait une augmentation du stock
-        updateStocksAndRestock({ hay: 95, legumes: 55 });
+        updateStocksAndRestock({ hay: 95, legumes: simulatedStocks.legumes });
     });
     manualRestockVegBtn.addEventListener('click', () => {
         alert("Demande de Réapprovisionnement Légumes (F3) envoyée manuellement.");
-        // Ici, on simulerait une augmentation du stock
-        updateStocksAndRestock({ hay: 80, legumes: 85 });
+        updateStocksAndRestock({ hay: simulatedStocks.hay, legumes: 85 });
     });
 
 
     // --- 3. STATUT DES MOUTONS ET LED ---
 
-    function updateSheepStatus(sheepInStable) {
+    function updateSheepStatus() {
+        // Récupérer le statut de F2 (simulé par LocalStorage)
+        const sheepInStable = parseInt(localStorage.getItem('sheepInStable') || 45); // Par défaut 45 si F2 n'a pas tourné
+
         sheepInStableDisplay.textContent = sheepInStable;
 
         const sheepInPasture = TOTAL_SHEEP - sheepInStable;
@@ -209,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ledStateDisplay.textContent = 'Éteinte';
             ledStateDisplay.className = 'status danger';
         } else {
-            // Aucun rentré : Statut normal (sauf s'il fait nuit/mauvais temps, géré par F2)
+            // Aucun rentré : Statut normal
             sheepLocationMsg.innerHTML = `<i class="fas fa-grass"></i> Tous sont dehors.`;
             sheepLocationMsg.className = 'alert-message info-text';
             ledStateDisplay.textContent = 'Éteinte';
@@ -222,10 +252,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Données de simulation (à remplacer par le fetch API)
     const simulatedStocks = { hay: 80, legumes: 15 }; // Simule un stock de légumes bas
-    const simulatedSheepCount = 45; // Simule que tous sont rentrés pour l'exemple
 
+    // Initialisation
     updateStocksAndRestock(simulatedStocks);
-    updateSheepStatus(simulatedSheepCount);
+    updateSheepStatus();
+
+    // Mise à jour de l'état des moutons toutes les 5 secondes (pour simuler la connexion F2)
+    setInterval(updateSheepStatus, 5000);
 
     function createCharts() {
         const labels = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];

@@ -20,7 +20,8 @@
         <a href="ferme1.php" class="nav-item">Ferme 1</a>
         <a href="ferme2.php" class="nav-item">Ferme 2</a>
         <a href="ferme3.php" class="nav-item">Ferme 3</a>
-        <a href="ferme4.php" class="nav-item active">Ferme 4</a> </nav>
+        <a href="ferme4.php" class="nav-item active">Ferme 4</a>
+    </nav>
 </header>
 
 <main class="dashboard-container">
@@ -55,6 +56,14 @@
             <div class="control-card control-gate">
                 <h4><i class="fas fa-door-open"></i> Trappe de Nourriture</h4>
                 <p>Statut Trappe : <span id="trap-status" class="status danger">Fermée</span></p>
+
+                <div class="toggle-container" style="margin-bottom: 15px;">
+                    <label class="switch">
+                        <input type="checkbox" id="trap-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span id="trap-mode-label">Mode Manuel de la Trappe</span>
+                </div>
 
                 <div class="toggle-container">
                     <label for="food-choice">Choix du Repas :</label>
