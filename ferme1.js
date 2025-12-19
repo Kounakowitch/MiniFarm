@@ -237,9 +237,51 @@ document.addEventListener('DOMContentLoaded', () => {
                 else waterBar.style.backgroundColor = "#4CAF50"; // vert
             }
 
+
+            // --- 4. NIVEAU DE BROUILLARD (Plage 0-4095) ---
+                const fog = parseInt(latest.fog_level); // Assurez-vous que la colonne SQL est fog_level
+                const fogLabel = document.getElementById('fog-status-label');
+                const fogBar = document.getElementById('fog-bar');
+                const fogRaw = document.getElementById('fog-raw-value');
+                const fogAdvice = document.getElementById('fog-advice');
+
+                if (fogLabel && fogBar) {
+                    fogRaw.textContent = fog;
+                    const fogPct = (fog / 4095) * 100;
+                    fogBar.style.width = `${fogPct}%`;
+
+                    // Tranches de visibilité
+                    if (fog <= 500) {
+                        fogLabel.innerText = "Clair";
+                        fogLabel.className = "status good";
+                        fogBar.style.backgroundColor = "#2ecc71"; // Vert
+                        fogAdvice.innerText = "Conditions de semis idéales.";
+                    } 
+                    else if (fog <= 1500) {
+                        fogLabel.innerText = "Brume";
+                        fogLabel.className = "status info"; 
+                        fogBar.style.backgroundColor = "#3498db"; // Bleu
+                        fogAdvice.innerText = "Visibilité légèrement réduite.";
+                    }
+                    else if (fog <= 2800) {
+                        fogLabel.innerText = "Brouillard";
+                        fogLabel.className = "status warning";
+                        fogBar.style.backgroundColor = "#f39c12"; // Orange
+                        fogAdvice.innerText = "Attention aux machines.";
+                    }
+                    else {
+                        fogLabel.innerText = "Dense";
+                        fogLabel.className = "status danger";
+                        fogBar.style.backgroundColor = "#e74c3c"; // Rouge
+                        fogAdvice.innerText = "DANGER : Visibilité nulle.";
+                    }
+                }
+
         })
         .catch(err => {
             console.error("Erreur fetch :", err);
         });
+
+
 });
 
