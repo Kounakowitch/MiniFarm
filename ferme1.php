@@ -51,7 +51,7 @@
             </div>
 
             <div class="control-card control-seeding">
-                <h4><i class="fas fa-tractor"></i> Contrôle des Semis</h4>
+                <h4><i class="fas fa-tractor"></i> Controole brouillard</h4>
                 <p>Statut du capteur : <span id="seeding-go-status" class="status good">Feu Vert (OK)</span></p>
 
                 <div class="toggle-container">
