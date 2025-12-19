@@ -41,14 +41,13 @@
             <div class="control-card control-irrigation">
                 <h4><i class="fas fa-water"></i> Système d'Irrigation</h4>
                 <p>Statut : <span id="irrigation-status" class="status good">Automatique</span></p>
-                <div class="toggle-container">
-                    <label class="switch">
-                        <input type="checkbox" id="irrigation-toggle" checked>
-                        <span class="slider round"></span>
-                    </label>
-                    <span id="irrigation-mode-label">Mode Auto activé</span>
+                <p id="soil-status">État du sol : --</p> <!-- Nouveau span pour l'état du sol -->
+                <p>Niveau réservoir :</p>
+                <div id="water-bar-container" style="width: 100%; background-color: #ddd; border-radius: 5px; height: 20px;">
+                    <div id="water-bar" style="height: 100%; width: 0%; background-color: #4CAF50; border-radius: 5px;"></div>
                 </div>
-                <button class="btn-action green-btn" id="manual-irrigation-btn"><i class="fas fa-tint"></i> Arroser 5 min (Manuel)</button>
+                <p id="water-alert" style="color: red; display: none;">Réservoir faible !</p>
+                <div class="toggle-container"></div>
             </div>
 
             <div class="control-card control-seeding">
@@ -67,8 +66,8 @@
 
             <div class="control-card control-temperature">
                 <h4><i class="fas fa-thermometer-three-quarters"></i> Température Actuelle</h4>
-                <p class="data-value"><span id="temp-actuelle">18.5</span> °C</p>
-                <p class="alert-message warning-text" id="gel-alert">
+                <p class="data-value"><span id="air_temp">--</span> °C</p>
+                <p class="alert-message warning-text" id="gel-alert" style="display:none;">
                     <i class="fas fa-exclamation-triangle"></i> **Risque de Gel** imminent (< 3°C). Déclenchement de l'alerte !
                 </p>
             </div>

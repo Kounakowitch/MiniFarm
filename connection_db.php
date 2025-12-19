@@ -1,10 +1,8 @@
 <?php
-// Connexion à la base MySQL (sera utilisée plus tard)
-
 $host = "localhost";
-$db   = "smartfarm";   // ta future base
+$db   = "smartfarm";
 $user = "root";
-$pass = "";            // vide sur XAMPP
+$pass = "isen44";
 
 try {
     $pdo = new PDO(
@@ -17,5 +15,8 @@ try {
         ]
     );
 } catch (PDOException $e) {
-    // Pour l’instant on affiche rien (silencieux)
+    header('Content-Type: application/json');
+    echo json_encode(['error' => $e->getMessage()]);
+    exit;   
 }
+?>

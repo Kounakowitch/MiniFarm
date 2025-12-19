@@ -177,3 +177,100 @@ document.addEventListener('DOMContentLoaded', () => {
 
     createCharts();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('get_sensors.php')
+        .then(res => res.json())
+        .then(data => {
+            if (data.error || !data.length) return;
+
+            const latest = data[0];
+
+            // --- MOUTONS ---
+            const sheepCount = parseInt(latest.sheep_count);
+            const sheepSpan = document.getElementById('sheep_count');
+            const sheepBar = document.getElementById('sheep_bar');
+            const sheepMessage = document.getElementById('sheep-status-message');
+
+            const MAX_SHEEP = 150;
+
+            if (sheepSpan && !isNaN(sheepCount)) {
+                sheepSpan.textContent = sheepCount;
+            }
+
+            if (sheepBar && !isNaN(sheepCount)) {
+                let percent = (sheepCount / MAX_SHEEP) * 100;
+                percent = Math.min(percent, 100);
+
+                sheepBar.style.width = percent + "%";
+
+                if (percent < 40) {
+                    sheepBar.style.backgroundColor = "#f44336";
+                } else if (percent < 70) {
+                    sheepBar.style.backgroundColor = "#ff9800";
+                } else {
+                    sheepBar.style.backgroundColor = "#4CAF50";
+                }
+            }
+
+            if (sheepMessage) {
+                if (sheepCount < 10) {
+                    sheepMessage.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Peu de moutons détectés`;
+                    sheepMessage.className = "alert-message warning-text";
+                } else {
+                    sheepMessage.innerHTML = `<i class="fas fa-check-circle"></i> Conditions stables.`;
+                    sheepMessage.className = "alert-message good-text";
+                }
+            }
+
+            // --- ULTRASON / TRAPPE ---
+            const distance = parseFloat(latest.ultrasonic_distance);
+            const presenceSpan = document.getElementById('presence_mouton');
+
+            console.log("Distance ultrason =", distance);
+
+            if (presenceSpan && !isNaN(distance)) {
+                if (distance >= 3 && distance <= 7) {
+                    presenceSpan.textContent = `Ouvrir la trappe (${distance} cm)`;
+                    presenceSpan.style.color = "green";
+                } else {
+                    presenceSpan.textContent = `Fermer la trappe (${distance} cm)`;
+                    presenceSpan.style.color = "red";
+                }
+            }
+            // --- NIVEAU D'EAU ---
+            const water = parseInt(latest.water_tank_level);
+            const waterBar = document.getElementById('water-bar');
+            const waterAlert = document.getElementById('water-alert');
+
+            if (waterBar && waterAlert) {
+                // Remplissage de la barre
+                const pourcentage = Math.min(Math.max(water / 1023 * 100, 0), 100);
+                waterBar.style.width = `${pourcentage}%`;
+
+                // Texte selon niveau
+                let niveauTexte = "";
+                if (water >= 0 && water < 50) niveauTexte = "Capteur à sec";
+                else if (water < 150) niveauTexte = "Niveau très bas";
+                else if (water < 300) niveauTexte = "Niveau bas";
+                else if (water < 600) niveauTexte = "Niveau moyen";
+                else if (water < 850) niveauTexte = "Niveau élevé";
+                else niveauTexte = "Niveau très élevé";
+
+                // Alerte si niveau < 300
+                if (water < 300) {
+                    waterAlert.textContent = `Alerte : ${niveauTexte} !`;
+                    waterAlert.style.display = 'block';
+                } else {
+                    waterAlert.style.display = 'none';
+                }
+
+                // Optionnel : couleur de la barre selon niveau
+                if (water < 300) waterBar.style.backgroundColor = "#f44336"; // rouge
+                else if (water < 600) waterBar.style.backgroundColor = "#FF9800"; // orange
+                else waterBar.style.backgroundColor = "#4CAF50"; // vert
+            }
+        })
+        .catch(err => console.error(err));
+});
+
