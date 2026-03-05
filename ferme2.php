@@ -52,17 +52,12 @@
             </div>
 
             <div class="control-card control-seeding">
-                <h4><i class="fas fa-bell"></i> Système d'Alerte Vétérinaire</h4>
-                <p>Statut des Capteurs : <span id="vet-status" class="status good">Non Urgent</span></p>
-
-                <div class="toggle-container">
-                    <label class="switch">
-                        <input type="checkbox" id="sensor-toggle" checked>
-                        <span class="slider round"></span>
-                    </label>
-                    <span id="sensor-mode-label">Capteurs Animaux ON</span>
+                <p>Niveau réservoir :</p>
+                <div id="water-bar-container" style="width: 100%; background-color: #ddd; border-radius: 5px; height: 20px;">
+                    <div id="water-bar" style="height: 100%; width: 0%; background-color: #4CAF50; border-radius: 5px;"></div>
                 </div>
-                <p class="alert-message" id="vet-alert-msg"><i class="fas fa-check-circle"></i> Pas d'anomalie détectée.</p>
+                <p id="water-alert" style="color: red; display: none;">Réservoir faible !</p>
+                <div class="toggle-container"></div>
             </div>
 
             <div class="control-card control-temperature">
@@ -71,6 +66,15 @@
                 <p class="alert-message danger-text" id="weather-alert" style="display: none;">
                     <i class="fas fa-exclamation-triangle"></i> **Risque d'Hypothermie** imminent. Les moutons doivent rentrer !
                 </p>
+            </div>
+
+            <div class="control-card control-energy">
+                <h4><i class="fas fa-bolt"></i> Consommation Énergie</h4>
+                <p class="data-value"><span>30</span> kWh</p>
+                <div class="progress-bar-container" style="height: 10px; margin-top: 10px;">
+                    <div class="progress-bar" style="width: 30%; background-color: #673AB7;"></div>
+                </div>
+                <p class="progress-label" style="font-size: 0.8em; margin-top: 5px;">Utilisation : Économe (Éclairage Étable)</p>
             </div>
 
         </div>
@@ -84,25 +88,19 @@
         <div class="logistics-grid">
 
             <div class="progress-card">
-                <h4>Localisation des Moutons (Total: 45)</h4>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" id="sheep-location-progress" style="width: 100%;"></div>
+                <h4>Localisation des Moutons</h4>
+                <div id="sheep_bar_container" style="width: 100%; background-color: #ddd; border-radius: 5px; height: 20px;">
+                    <div id="sheep_bar" style="height: 100%; width: 0%; background-color: #4CAF50; border-radius: 5px;"></div>
                 </div>
-                <p class="progress-label">Dans la Pâture : <span id="sheep-location-value">45</span> moutons</p>
+                <p class="progress-label">Dans la Pâture : <span id="sheep_count">--</span> moutons</p>
                 <p class="alert-message good-text" id="sheep-status-message">
                     <i class="fas fa-check-circle"></i> Conditions stables.
                 </p>
             </div>
 
             <div class="progress-card">
-                <h4>Taux de Remplissage de l'Étable</h4>
-                <div class="progress-bar-container">
-                    <div class="progress-bar progress-green-to-red" id="stable-progress" style="width: 0%;"></div>
-                </div>
-                <p class="progress-label">Étable remplie à : <span id="stable-value">0</span>%</p>
-                <p class="alert-message danger-text" id="stable-warning">
-                    <i class="fas fa-info-circle"></i> L'Étable est actuellement vide.
-                </p>
+                <h4>Présence de moutons</h4>
+                <p>Présence de mouton devant la trappe : <span id="presence_mouton">--</span></p>
             </div>
 
         </div>
@@ -112,21 +110,17 @@
 
     <section class="historical-charts">
         <h3>Analyse des Conditions Environnementales (7 Derniers Jours)</h3>
-
         <div class="charts-grid">
             <div class="chart-card">
                 <h4>Température de la Pâture (°C)</h4>
                 <canvas id="pastureTempChart"></canvas>
             </div>
-
             <div class="chart-card">
                 <h4>Humidité de l'Air (%)</h4>
                 <canvas id="airHumidityChart"></canvas>
             </div>
         </div>
-
     </section>
-
 </main>
 
 <script src="ferme2.js"></script>

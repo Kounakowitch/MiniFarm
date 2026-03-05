@@ -156,3 +156,132 @@ document.addEventListener('DOMContentLoaded', () => {
 
     createCharts();
 });
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('get_sensors.php')
+        .then(res => res.json())
+        .then(data => {
+            console.log("Données reçues :", data); // pour debug
+            if (data.error) {
+                console.error("Erreur PHP :", data.error);
+                return;
+            }
+            if (!data.length) {
+                console.log("Pas de données");
+                return;
+            }
+
+            const latest = data[0];
+
+            // --- TEMPÉRATURE ---
+            const temp = parseFloat(latest.air_temp);
+            const airTempSpan = document.getElementById('air_temp');
+            if (airTempSpan) airTempSpan.textContent = temp;
+
+            // Gestion du message de gel
+            const gelAlert = document.getElementById('gel-alert');
+            if (gelAlert) gelAlert.style.display = temp < 3 ? 'block' : 'none';
+
+            // --- HUMIDITÉ DU SOL / IRRIGATION ---
+            const soil = parseInt(latest.soil_humidity);
+            const soilStatus = document.getElementById('soil-status');
+            const irrigationStatus = document.getElementById('irrigation-status');
+
+            if (soilStatus && irrigationStatus) {
+                let texteSol = "";
+                let arroser = false;
+
+                if (soil >= 850) { texteSol = "Très sec"; arroser = true; }
+                else if (soil >= 600) { texteSol = "Sec"; arroser = true; }
+                else if (soil >= 400) { texteSol = "Humidité moyenne"; arroser = false; }
+                else if (soil >= 200) { texteSol = "Humide"; arroser = false; }
+                else { texteSol = "Très humide / eau"; arroser = false; }
+
+                soilStatus.textContent = `État du sol : ${texteSol}`;
+                irrigationStatus.textContent = arroser ? "Arroser" : "Ne pas arroser";
+                irrigationStatus.className = arroser ? "status warning" : "status good";
+            }
+
+            // --- NIVEAU D'EAU ---
+            const water = parseInt(latest.water_tank_level);
+            const waterBar = document.getElementById('water-bar');
+            const waterAlert = document.getElementById('water-alert');
+
+            if (waterBar && waterAlert) {
+                // Remplissage de la barre
+                const pourcentage = Math.min(Math.max(water / 1023 * 100, 0), 100);
+                waterBar.style.width = `${pourcentage}%`;
+
+                // Texte selon niveau
+                let niveauTexte = "";
+                if (water >= 0 && water < 50) niveauTexte = "Capteur à sec";
+                else if (water < 150) niveauTexte = "Niveau très bas";
+                else if (water < 300) niveauTexte = "Niveau bas";
+                else if (water < 600) niveauTexte = "Niveau moyen";
+                else if (water < 850) niveauTexte = "Niveau élevé";
+                else niveauTexte = "Niveau très élevé";
+
+                // Alerte si niveau < 300
+                if (water < 300) {
+                    waterAlert.textContent = `Alerte : ${niveauTexte} !`;
+                    waterAlert.style.display = 'block';
+                } else {
+                    waterAlert.style.display = 'none';
+                }
+
+                // Optionnel : couleur de la barre selon niveau
+                if (water < 300) waterBar.style.backgroundColor = "#f44336"; // rouge
+                else if (water < 600) waterBar.style.backgroundColor = "#FF9800"; // orange
+                else waterBar.style.backgroundColor = "#4CAF50"; // vert
+            }
+
+
+            // --- 4. NIVEAU DE BROUILLARD (Plage 0-4095) ---
+                const fog = parseInt(latest.fog_level); // Assurez-vous que la colonne SQL est fog_level
+                const fogLabel = document.getElementById('fog-status-label');
+                const fogBar = document.getElementById('fog-bar');
+                const fogRaw = document.getElementById('fog-raw-value');
+                const fogAdvice = document.getElementById('fog-advice');
+
+                if (fogLabel && fogBar) {
+                    fogRaw.textContent = fog;
+                    const fogPct = (fog / 4095) * 100;
+                    fogBar.style.width = `${fogPct}%`;
+
+                    // Tranches de visibilité
+                    if (fog <= 500) {
+                        fogLabel.innerText = "Clair";
+                        fogLabel.className = "status good";
+                        fogBar.style.backgroundColor = "#2ecc71"; // Vert
+                        fogAdvice.innerText = "Conditions de semis idéales.";
+                    } 
+                    else if (fog <= 1500) {
+                        fogLabel.innerText = "Brume";
+                        fogLabel.className = "status info"; 
+                        fogBar.style.backgroundColor = "#3498db"; // Bleu
+                        fogAdvice.innerText = "Visibilité légèrement réduite.";
+                    }
+                    else if (fog <= 2800) {
+                        fogLabel.innerText = "Brouillard";
+                        fogLabel.className = "status warning";
+                        fogBar.style.backgroundColor = "#f39c12"; // Orange
+                        fogAdvice.innerText = "Attention aux machines.";
+                    }
+                    else {
+                        fogLabel.innerText = "Dense";
+                        fogLabel.className = "status danger";
+                        fogBar.style.backgroundColor = "#e74c3c"; // Rouge
+                        fogAdvice.innerText = "DANGER : Visibilité nulle.";
+                    }
+                }
+
+        })
+        .catch(err => {
+            console.error("Erreur fetch :", err);
+        });
+
+
+});
+

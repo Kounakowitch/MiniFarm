@@ -1,32 +1,41 @@
 <?php
-// Définit l'en-tête pour indiquer au navigateur qu'il s'agit d'une réponse JSON
+
 header('Content-Type: application/json');
 
-// -----------------------------------------------------------
-// ETAPE 1 : Connexion à la Base de Données (via PHPStorm)
-// -----------------------------------------------------------
+// connexion à la base
+require 'connection_db.php';
 
-// Normalement, vous auriez ici votre logique de connexion BDD (PDO)
+try {
 
-// -----------------------------------------------------------
-// ETAPE 2 : Récupération des données les plus récentes
-// -----------------------------------------------------------
+    // récupérer la dernière ligne de sensor_data
+    $sql = "SELECT * FROM sensor_data ORDER BY updated_at DESC LIMIT 1";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
 
-// Simulez la récupération des données les plus récentes de votre BDD
-// REMPLACEZ CE CODE PAR VOTRE REQUÊTE SQL RÉELLE
-$latestSensorData = [
-    // Ces clés correspondent aux noms utilisés dans le script.js
-    'temperature' => 21.8,
-    'humidity' => 63.5,
-    'waterLevel' => 88,
-    'lightIntensity' => 590
-    // Ajoutez ici d'autres données importantes (ex: pression, CO2, etc.)
-];
+    $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// -----------------------------------------------------------
-// ETAPE 3 : Renvoyer les données au format JSON
-// -----------------------------------------------------------
+    if ($data) {
 
-echo json_encode($latestSensorData);
-exit;
+        $latestSensorData = [
+            "temperature" => $data["air_temp"],
+            "humidity" => $data["air_humidity"],
+            "soilHumidity" => $data["soil_humidity"],
+            "waterLevel" => $data["water_level"],
+            "lightIntensity" => $data["photoresistor"]
+        ];
+
+        echo json_encode($latestSensorData);
+
+    } else {
+        echo json_encode(["error" => "Aucune donnée trouvée"]);
+    }
+
+} catch (PDOException $e) {
+
+    echo json_encode([
+        "error" => $e->getMessage()
+    ]);
+
+}
+
 ?>

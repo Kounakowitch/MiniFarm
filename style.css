@@ -670,6 +670,7 @@ input:checked + .slider:before {
     color: #1565c0;
 }
 
+
 /* --- Toggle Switch (ON/OFF) --- */
 .toggle-container {
     display: flex;
@@ -739,4 +740,32 @@ input:checked + .slider:before {
     border: 1px solid var(--color-border);
     border-radius: 4px;
     font-size: 1em;
+}
+/* Style spécifique pour la carte Énergie Totale */
+.data-card.energy-total {
+    border-left-color: #673AB7; /* Violet / Deep Purple */
+}
+
+.data-card.energy-total i {
+    color: #9575CD; /* Violet plus clair pour l'icône */
+}
+
+/* Optionnel : Si vous voulez qu'elle ressorte un peu plus car c'est un total */
+.data-card.energy-total span {
+    color: #4527A0; 
+}
+
+
+/* Style pour la carte Énergie de la Ferme 1 */
+.control-card.control-energy {
+    border-left: 5px solid #673AB7; /* Violet */
+}
+
+.control-card.control-energy i {
+    color: #9575CD;
+}
+
+.control-card.control-energy .data-value {
+    color: #4527A0;
+
 }

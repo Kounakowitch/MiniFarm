@@ -41,36 +41,48 @@
             <div class="control-card control-irrigation">
                 <h4><i class="fas fa-water"></i> Système d'Irrigation</h4>
                 <p>Statut : <span id="irrigation-status" class="status good">Automatique</span></p>
-                <div class="toggle-container">
-                    <label class="switch">
-                        <input type="checkbox" id="irrigation-toggle" checked>
-                        <span class="slider round"></span>
-                    </label>
-                    <span id="irrigation-mode-label">Mode Auto activé</span>
+                <p id="soil-status">État du sol : --</p> <!-- Nouveau span pour l'état du sol -->
+                <p>Niveau réservoir :</p>
+                <div id="water-bar-container" style="width: 100%; background-color: #ddd; border-radius: 5px; height: 20px;">
+                    <div id="water-bar" style="height: 100%; width: 0%; background-color: #4CAF50; border-radius: 5px;"></div>
                 </div>
-                <button class="btn-action green-btn" id="manual-irrigation-btn"><i class="fas fa-tint"></i> Arroser 5 min (Manuel)</button>
+                <p id="water-alert" style="color: red; display: none;">Réservoir faible !</p>
+                <div class="toggle-container"></div>
             </div>
 
-            <div class="control-card control-seeding">
-                <h4><i class="fas fa-tractor"></i> Contrôle des Semis</h4>
-                <p>Statut du capteur : <span id="seeding-go-status" class="status good">Feu Vert (OK)</span></p>
-
-                <div class="toggle-container">
-                    <label class="switch">
-                        <input type="checkbox" id="seeding-toggle" checked>
-                        <span class="slider round"></span>
-                    </label>
-                    <span id="seeding-mode-label">Semis Automatique ON</span>
-                </div>
-                <p class="alert-message" id="seeding-alert-msg"><i class="fas fa-check-circle"></i> Température, Humidité et Gel OK.</p>
+            <div class="control-card control-fog">
+            <h4><i class="fas fa-smog"></i> Niveau de Brouillard</h4>
+            <p>Intensité : <span id="fog-status-label" class="status">Analyse...</span></p>
+            
+            <div class="fog-bar-container" style="width: 100%; background-color: #eee; border-radius: 5px; height: 15px; margin: 10px 0;">
+                <div id="fog-bar" style="height: 100%; width: 0%; background-color: #3498db; border-radius: 5px; transition: width 0.5s;"></div>
             </div>
+            
+            <p class="data-value" style="font-size: 0.9em;"><span id="fog-raw-value">0</span> / 4095</p>
+            
+            <p class="alert-message" id="fog-alert-msg" style="margin-top:10px;">
+                <i class="fas fa-info-circle"></i> <span id="fog-advice">Calcul des données...</span>
+            </p>
+
+    
+
+        </div>
 
             <div class="control-card control-temperature">
                 <h4><i class="fas fa-thermometer-three-quarters"></i> Température Actuelle</h4>
-                <p class="data-value"><span id="temp-actuelle">18.5</span> °C</p>
-                <p class="alert-message warning-text" id="gel-alert">
+                <p class="data-value"><span id="air_temp">--</span> °C</p>
+                <p class="alert-message warning-text" id="gel-alert" style="display:none;">
                     <i class="fas fa-exclamation-triangle"></i> **Risque de Gel** imminent (< 3°C). Déclenchement de l'alerte !
                 </p>
+            </div>
+
+            <div class="control-card control-energy">
+                <h4><i class="fas fa-bolt"></i> Consommation Énergie</h4>
+                <p class="data-value"><span>45</span> kWh</p>
+                <div class="progress-bar-container" style="height: 10px; margin-top: 10px;">
+                    <div class="progress-bar" style="width: 45%; background-color: #673AB7;"></div>
+                </div>
+                <p class="progress-label" style="font-size: 0.8em; margin-top: 5px;">Utilisation : Normale</p>
             </div>
 
         </div>
