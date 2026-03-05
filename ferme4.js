@@ -306,3 +306,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     createCharts();
 });
+loadSensors();
+
+setInterval(loadSensors, 2000);

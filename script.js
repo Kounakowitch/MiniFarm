@@ -1,50 +1,162 @@
-// Fonction pour mettre à jour les éléments HTML avec les données reçues
 function updateDashboard(data) {
-    if (data && typeof data === 'object') {
-        // Mise à jour des indicateurs clés
-        document.getElementById('temp-global').textContent = data.temperature ? data.temperature.toFixed(1) : '--';
-        document.getElementById('humi-global').textContent = data.humidity ? data.humidity.toFixed(0) : '--';
-        document.getElementById('energy-global').textContent = '142';
-    
-        document.getElementById('water-global').textContent = data.waterLevel ? data.waterLevel.toFixed(0) : '--';
-        document.getElementById('light-global').textContent = data.lightIntensity ? data.lightIntensity.toFixed(0) : '--';
 
-        // Mise à jour de l'heure locale et du temps de la dernière mise à jour
-        const now = new Date();
-        document.getElementById('time-display').textContent = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
-        document.getElementById('last-update-time').textContent = now.toLocaleTimeString('fr-FR');
+if (!data || typeof data !== "object") return;
 
-        // --- Vous ajouterez ici la logique pour mettre à jour les "farm-card" si elles sont dynamiques ---
-    }
+console.log("DATA BDD :", data);
+
+
+// =======================
+// TEMPÉRATURE
+// =======================
+
+if(document.getElementById("air_temp"))
+document.getElementById("air_temp").textContent =
+data.air_temp ?? "--";
+
+
+// =======================
+// HUMIDITÉ AIR
+// =======================
+
+if(document.getElementById("air_humidity"))
+document.getElementById("air_humidity").textContent =
+data.air_humidity ?? "--";
+
+
+// =======================
+// HUMIDITÉ SOL
+// =======================
+
+if(document.getElementById("soil_humidity"))
+document.getElementById("soil_humidity").textContent =
+data.soil_humidity ?? "--";
+
+
+// =======================
+// LUMIÈRE
+// =======================
+
+if(document.getElementById("photoresistor"))
+document.getElementById("photoresistor").textContent =
+data.photoresistor ?? "--";
+
+
+// =======================
+// NIVEAU EAU
+// =======================
+
+if(document.getElementById("water_level"))
+document.getElementById("water_level").textContent =
+data.water_level ?? "--";
+
+
+// =======================
+// POMPE
+// =======================
+
+if(document.getElementById("water_pump"))
+document.getElementById("water_pump").textContent =
+data.water_pump ? "ON" : "OFF";
+
+
+// =======================
+// LCD
+// =======================
+
+if(document.getElementById("lcd_text"))
+document.getElementById("lcd_text").textContent =
+data.lcd_text ?? "--";
+
+
+// =======================
+// PIR
+// =======================
+
+if(document.getElementById("pir_motion"))
+document.getElementById("pir_motion").textContent =
+data.pir_motion ? "Mouvement détecté" : "Aucun mouvement";
+
+
+// =======================
+// BUZZER
+// =======================
+
+if(document.getElementById("passive_buzzer"))
+document.getElementById("passive_buzzer").textContent =
+data.passive_buzzer ? "Actif" : "Inactif";
+
+
+// =======================
+// ULTRASON
+// =======================
+
+if(document.getElementById("ultrasonic_distance"))
+document.getElementById("ultrasonic_distance").textContent =
+data.ultrasonic_distance ?? "--";
+
+
+// =======================
+// SERVO
+// =======================
+
+if(document.getElementById("servo"))
+document.getElementById("servo").textContent =
+data.servo ?? "--";
+
+
+// =======================
+// MOUTONS
+// =======================
+
+if(document.getElementById("sheep_count"))
+document.getElementById("sheep_count").textContent =
+data.sheep_count ?? "--";
+
+if(document.getElementById("etat_sheep_count"))
+document.getElementById("etat_sheep_count").textContent =
+data.etat_sheep_count ?? "--";
+
+
+// =======================
+// CONSOMMATION
+// =======================
+
+if(document.getElementById("consommation"))
+document.getElementById("consommation").textContent =
+data.consommation ?? "--";
+
 }
 
-// Fonction pour récupérer les données depuis votre API PHP
+
+// =======================
+// FETCH API
+// =======================
+
 function fetchDataFromAPI() {
-    // URL de votre script PHP qui fournira les données JSON
-    const apiURL = 'api_data.php';
 
-    fetch(apiURL)
-        .then(response => {
-            if (!response.ok) {
-                // Gestion des erreurs HTTP (ex: 404, 500)
-                throw new Error(`Erreur HTTP: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Affichage des données reçues
-            console.log('Données reçues:', data);
-            updateDashboard(data);
-        })
-        .catch(error => {
-            console.error('Erreur lors de la récupération des données en direct:', error);
-            // Si la connexion échoue, on affiche des tirets pour indiquer un problème
-            updateDashboard({ temperature: null, humidity: null, waterLevel: null, lightIntensity: null });
-        });
+fetch(`api_data.php?farm=${FARM_ID}`)
+
+.then(response => response.json())
+
+.then(data => {
+
+updateDashboard(data);
+
+})
+
+.catch(error => {
+
+console.error("Erreur API :", error);
+
+});
+
 }
 
-// Lancer la fonction immédiatement au chargement de la page
+
+// =======================
+// LANCEMENT
+// =======================
+
 fetchDataFromAPI();
 
-// Mettre à jour les données toutes les 5 secondes (vous pouvez ajuster l'intervalle)
-setInterval(fetchDataFromAPI, 5000);
+setInterval(fetchDataFromAPI, 2000);

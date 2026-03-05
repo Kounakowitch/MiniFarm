@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // --- NIVEAU D'EAU ---
-            const water = parseInt(latest.water_tank_level);
+            const water = parseInt(latest.water_level);
             const waterBar = document.getElementById('water-bar');
             const waterAlert = document.getElementById('water-alert');
 
@@ -284,4 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 });
+loadSensors();
+
+setInterval(loadSensors, 2000);
 

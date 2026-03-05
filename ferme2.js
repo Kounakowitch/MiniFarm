@@ -273,4 +273,6 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(err => console.error(err));
 });
+loadSensors();
 
+setInterval(loadSensors, 2000);

@@ -1,10 +1,24 @@
 <?php
-require 'connection_db.php';
+if (file_exists("connexion_db.php")) {
+    require("connexion_db.php");
+}
+
+$farm_id = $_GET['farm'] ?? 1;
 
 try {
-    $stmt = $pdo->query("SELECT * FROM farms");
-    echo json_encode($stmt->fetchAll());
+
+$stmt = $pdo->prepare("SELECT * FROM sensor_data WHERE farm_id = ?");
+$stmt->execute([$farm_id]);
+
+$data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+echo json_encode($data);
+
 } catch (PDOException $e) {
-    echo json_encode(['error' => $e->getMessage()]);
+
+echo json_encode([
+"error" => $e->getMessage()
+]);
+
 }
 ?>

@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
+<script>
+const FARM_ID = 1;
+</script>
+
+<script src="script.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -137,6 +142,11 @@
 
 </main>
 
-<script src="ferme1.js"></script>
+<script>
+const FARM_ID = 1;
+</script>
+
+<script src="script.js"></script>
+
 </body>
 </html>
