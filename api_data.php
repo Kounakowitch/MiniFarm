@@ -3,7 +3,7 @@
 header('Content-Type: application/json');
 
 // connexion à la base
-require 'connection_db.php';
+require 'connexion_db.php';
 
 try {
 
