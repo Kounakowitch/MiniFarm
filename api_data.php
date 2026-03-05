@@ -3,7 +3,9 @@
 header('Content-Type: application/json');
 
 // connexion à la base
-require 'connexion_db.php';
+if (file_exists("connexion_db.php")) {
+    require("connexion_db.php");
+}
 
 try {
 
