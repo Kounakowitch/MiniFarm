@@ -63,6 +63,9 @@
             <p class="alert-message" id="fog-alert-msg" style="margin-top:10px;">
                 <i class="fas fa-info-circle"></i> <span id="fog-advice">Calcul des données...</span>
             </p>
+
+    
+
         </div>
 
             <div class="control-card control-temperature">
@@ -71,6 +74,15 @@
                 <p class="alert-message warning-text" id="gel-alert" style="display:none;">
                     <i class="fas fa-exclamation-triangle"></i> **Risque de Gel** imminent (< 3°C). Déclenchement de l'alerte !
                 </p>
+            </div>
+
+            <div class="control-card control-energy">
+                <h4><i class="fas fa-bolt"></i> Consommation Énergie</h4>
+                <p class="data-value"><span>45</span> kWh</p>
+                <div class="progress-bar-container" style="height: 10px; margin-top: 10px;">
+                    <div class="progress-bar" style="width: 45%; background-color: #673AB7;"></div>
+                </div>
+                <p class="progress-label" style="font-size: 0.8em; margin-top: 5px;">Utilisation : Normale</p>
             </div>
 
         </div>

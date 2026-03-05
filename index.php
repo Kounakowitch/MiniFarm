@@ -34,7 +34,10 @@
             <div class="data-card"><i class="fas fa-clock"></i> Heure Locale: <span id="time-display">--:--</span></div>
             <div class="data-card"><i class="fas fa-water"></i> Niveau d'eau: <span id="water-global">0</span>%</div>
             <div class="data-card"><i class="fas fa-sun"></i> Luminosité: <span id="light-global">0</span> Lux</div>
+            <div class="data-card"><i class="fas fa-sun"></i> Energie: <span id="energy-global">134</span> kWh</div>
         </div>
+
+        
     </section>
 
     <hr>

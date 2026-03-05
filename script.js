@@ -4,6 +4,8 @@ function updateDashboard(data) {
         // Mise à jour des indicateurs clés
         document.getElementById('temp-global').textContent = data.temperature ? data.temperature.toFixed(1) : '--';
         document.getElementById('humi-global').textContent = data.humidity ? data.humidity.toFixed(0) : '--';
+        document.getElementById('energy-global').textContent = '142';
+    
         document.getElementById('water-global').textContent = data.waterLevel ? data.waterLevel.toFixed(0) : '--';
         document.getElementById('light-global').textContent = data.lightIntensity ? data.lightIntensity.toFixed(0) : '--';
 
