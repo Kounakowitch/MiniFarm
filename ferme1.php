@@ -63,11 +63,6 @@
             <p class="alert-message" id="fog-alert-msg" style="margin-top:10px;">
                 <i class="fas fa-info-circle"></i> <span id="fog-advice">Calcul des données...</span>
             </p>
-
-    
-
-        </div>
-
             <div class="control-card control-temperature">
                 <h4><i class="fas fa-thermometer-three-quarters"></i> Conditions Actuelles</h4>
                 <p class="data-value"><span id="air_temp">--</span> °C / <span id="air_humidity"></span> %</p>
@@ -75,7 +70,7 @@
                     <i class="fas fa-exclamation-triangle"></i> **Risque d'Hypothermie** imminent. Les moutons doivent rentrer !
                 </p>
             </div>
-
+ 
             <div class="control-card control-energy">
                 <h4><i class="fas fa-bolt"></i> Consommation Énergie</h4>
                 <p><span id="consommation">--</span> kWh</p>
@@ -84,8 +79,6 @@
                 </div>
                 <p class="progress-label" style="font-size: 0.8em; margin-top: 5px;">Utilisation : Normale</p>
             </div>
-
-        </div>
     </section>
 
     <hr>
