@@ -12,8 +12,6 @@ $stmt = $pdo->prepare("
     SELECT * 
     FROM sensor_data 
     WHERE farm_id = ?
-    ORDER BY timestamp DESC
-    LIMIT 1
 ");
 
 $stmt->execute([$farm]);
