@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-<script>
-const FARM_ID = 1;
-</script>
-
-<script src="script.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -83,7 +78,7 @@ const FARM_ID = 1;
 
             <div class="control-card control-energy">
                 <h4><i class="fas fa-bolt"></i> Consommation Énergie</h4>
-                <span id="consommation">--</span> kWh</p>
+                <p><span id="consommation">--</span> kWh</p>
                 <div class="progress-bar-container" style="height: 10px; margin-top: 10px;">
                     <div class="progress-bar" style="width: 45%; background-color: #673AB7;"></div>
                 </div>
