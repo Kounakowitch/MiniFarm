@@ -1,64 +1,60 @@
 <!DOCTYPE html>
 <html lang="fr">
-<script>
-const FARM_ID = 3;
-</script>
-<script src="script.js"></script>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Ferme 3 : Le Potager</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-</head>
-<body>
-
-<header class="main-header">
-    <div class="logo">
-        <h1>Mini Farm</h1>
-    </div>
-
-    <nav class="farm-nav">
-        <a href="index.php" class="nav-item">Accueil</a>
-        <a href="ferme1.php" class="nav-item">Ferme 1</a>
-        <a href="ferme2.php" class="nav-item">Ferme 2</a>
-        <a href="ferme3.php" class="nav-item active">Ferme 3</a> <a href="ferme4.php" class="nav-item">Ferme 4</a>
-    </nav>
-</header>
-
-<main class="dashboard-container">
-
-    <section class="farm-detail-header">
-        <h2><i class="fas fa-carrot"></i> Dashboard Détaillé : Ferme 3 - Le Potager</h2>
-        <p class="farm-subtitle">Gestion des cultures maraîchères, irrigation optimisée et stocks.</p>
-    </section>
-
-    <hr>
-
-    <section class="farm-controls-alerts">
-        <h3>Contrôles d'Irrigation & Alertes Météo</h3>
-
-        <div class="controls-grid">
-
-            <div class="control-card control-irrigation">
-                <h4><i class="fas fa-water"></i> Système d'Irrigation</h4>
-                <p>Statut : <span id="irrigation-status" class="status good">Automatique</span></p>
-                <div class="toggle-container">
-                    <label class="switch">
-                        <input type="checkbox" id="irrigation-toggle" checked>
-                        <span class="slider round"></span>
-                    </label>
-                    <span id="irrigation-mode-label">Mode Auto ON (Calculé)</span>
-                </div>
-                <button class="btn-action green-btn" id="manual-irrigation-btn"><i class="fas fa-tint"></i> Arroser 5 min (Manuel)</button>
+    <script>
+    const FARM_ID = 3;
+    </script>
+    <script src="script.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard - Ferme 3 : Le Potager</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    </head>
+    <body>
+        <header class="main-header">
+            <div class="logo">
+                <h1>Mini Farm</h1>
             </div>
-
-            <div class="control-card control-seeding">
-                <h4><i class="fas fa-clock"></i> Arrosage Automatique</h4>
-                <p>Prochain cycle : <span id="next-irrigation-time" style="font-weight: 700;">--:--</span></p>
-
-                <div class="toggle-container">
+            
+            <nav class="farm-nav">
+                <a href="index.php" class="nav-item">Accueil</a>
+                <a href="ferme1.php" class="nav-item">Ferme 1</a>
+                <a href="ferme2.php" class="nav-item">Ferme 2</a>
+                <a href="ferme3.php" class="nav-item active">Ferme 3</a> 
+                <a href="ferme4.php" class="nav-item">Ferme 4</a>
+            </nav>
+        </header>
+        <main class="dashboard-container">
+            <section class="farm-detail-header">
+                <h2><i class="fas fa-carrot"></i> Dashboard Détaillé : Ferme 3 - Le Potager</h2>
+                <p class="farm-subtitle">Gestion des cultures maraîchères, irrigation optimisée et stocks.</p>
+            </section>
+            <hr>
+            <section class="farm-controls-alerts">
+                <h3>Contrôles d'Irrigation & Alertes Météo</h3>
+                <div class="controls-grid">
+                    <div class="control-card control-irrigation">
+                        <h4><i class="fas fa-water"></i> Système d'Irrigation</h4>
+                        <p>Statut : 
+                            <span id="irrigation-status" class="status good">Automatique</span>
+                        </p>
+                        <div class="toggle-container">
+                            <label class="switch">
+                                <input type="checkbox" id="irrigation-toggle" checked>
+                                <span class="slider round"></span>
+                            </label>
+                            <span id="irrigation-mode-label">Mode Auto ON (Calculé)</span>
+                        </div>
+                        <button class="btn-action green-btn" id="manual-irrigation-btn"><i class="fas fa-tint"></i> Arroser 5 min (Manuel)</button>
+                    </div>
+                    <div class="control-card control-seeding">
+                        <h4><i class="fas fa-clock"></i> Arrosage Automatique</h4>
+                        <p>Prochain cycle : 
+                            <span id="next-irrigation-time" style="font-weight: 700;">--:--</span>
+                        </p>
+                        <div class="toggle-container">
                     <label class="switch">
                         <input type="checkbox" id="seeding-toggle" checked disabled>
                         <span class="slider round"></span>
@@ -67,9 +63,10 @@ const FARM_ID = 3;
                 </div>
                 <p class="alert-message" id="irrigation-alert-msg"><i class="fas fa-check-circle"></i> Conditions actuelles optimales.</p>
             </div>
-
             <div class="control-card control-temperature">
-                <h4><i class="fas fa-thermometer-three-quarters"></i> Conditions Actuelles</h4>
+                <h4>
+                    <i class="fas fa-thermometer-three-quarters"></i> Conditions Actuelles
+                </h4>
                 <p class="data-value">
                     <span id="temp-actuelle">--</span> °C /
                     <span id="humi-actuelle">--</span> %
@@ -81,7 +78,7 @@ const FARM_ID = 3;
 
             <div class="control-card control-energy">
                 <h4><i class="fas fa-bolt"></i> Consommation Énergie</h4>
-                <p class="data-value"><span>45</span> kWh</p>
+                <span id="consommation">--</span> kWh</p>
                 <div class="progress-bar-container" style="height: 10px; margin-top: 10px;">
                     <div class="progress-bar" style="width: 45%; background-color: #673AB7;"></div>
                 </div>

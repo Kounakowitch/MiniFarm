@@ -83,7 +83,7 @@ const FARM_ID = 1;
 
             <div class="control-card control-energy">
                 <h4><i class="fas fa-bolt"></i> Consommation Énergie</h4>
-                <p class="data-value"><span>45</span> kWh</p>
+                <span id="consommation">--</span> kWh</p>
                 <div class="progress-bar-container" style="height: 10px; margin-top: 10px;">
                     <div class="progress-bar" style="width: 45%; background-color: #673AB7;"></div>
                 </div>
