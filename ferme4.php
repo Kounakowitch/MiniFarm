@@ -57,29 +57,6 @@ const FARM_ID = 4;
                 <button class="btn-action green-btn" id="manual-feed-btn"><i class="fas fa-plus"></i> Nourrir Maintenant (Manuel)</button>
             </div>
 
-            <div class="control-card control-gate">
-                <h4><i class="fas fa-door-open"></i> Trappe de Nourriture</h4>
-                <p>Statut Trappe : <span id="trap-status" class="status danger">Fermée</span></p>
-
-                <div class="toggle-container" style="margin-bottom: 15px;">
-                    <label class="switch">
-                        <input type="checkbox" id="trap-toggle">
-                        <span class="slider round"></span>
-                    </label>
-                    <span id="trap-mode-label">Mode Manuel de la Trappe</span>
-                </div>
-
-                <div class="toggle-container">
-                    <label for="food-choice">Choix du Repas :</label>
-                    <select id="food-choice">
-                        <option value="foin">Foin / Paille (F1)</option>
-                        <option value="legumes">Légumes (F3)</option>
-                    </select>
-                </div>
-
-                <p class="alert-message warning-text" id="feeding-alert-msg"><i class="fas fa-clock"></i> En attente du prochain cycle.</p>
-            </div>
-
             <div class="control-card control-sheep-status">
                 <h4><i class="fas fa-sheep"></i> Statut des Animaux</h4>
                 <p>Moutons à l'Étable : <span id="sheep-in-stable" class="data-value">--</span> / 45</p>
@@ -90,6 +67,14 @@ const FARM_ID = 4;
 
                 <p class="alert-message" id="stable-led-status">
                     <i class="fas fa-lightbulb"></i> LED Étable : <span id="led-state" class="status danger">Éteinte</span>
+                </p>
+            </div>
+
+            <div class="control-card control-temperature">
+                <h4><i class="fas fa-thermometer-three-quarters"></i> Conditions Actuelles</h4>
+                <p class="data-value"><span id="air_temp">--</span> °C / <span id="air_humidity"></span> %</p>
+                <p class="alert-message danger-text" id="weather-alert" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i> **Risque d'Hypothermie** imminent. Les moutons doivent rentrer !
                 </p>
             </div>
 
@@ -145,6 +130,28 @@ const FARM_ID = 4;
             </div>
 
         </div>
+        <div class="control-card control-gate">
+                <h4><i class="fas fa-door-open"></i> Trappe de Nourriture</h4>
+                <p>Statut Trappe : <span id="trap-status" class="status danger">Fermée</span></p>
+
+                <div class="toggle-container" style="margin-bottom: 15px;">
+                    <label class="switch">
+                        <input type="checkbox" id="trap-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span id="trap-mode-label">Mode Manuel de la Trappe</span>
+                </div>
+
+                <div class="toggle-container">
+                    <label for="food-choice">Choix du Repas :</label>
+                    <select id="food-choice">
+                        <option value="foin">Foin / Paille (F1)</option>
+                        <option value="legumes">Légumes (F3)</option>
+                    </select>
+                </div>
+
+                <p class="alert-message warning-text" id="feeding-alert-msg"><i class="fas fa-clock"></i> En attente du prochain cycle.</p>
+            </div>
     </section>
 
     <hr>
