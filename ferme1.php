@@ -69,10 +69,10 @@
         </div>
 
             <div class="control-card control-temperature">
-                <h4><i class="fas fa-thermometer-three-quarters"></i> Température Actuelle</h4>
-                <p><span id="air_temp">--</span> °C </p>
-                <p class="alert-message warning-text" id="gel-alert" style="display:none;">
-                    <i class="fas fa-exclamation-triangle"></i> **Risque de Gel** imminent (< 3°C). Déclenchement de l'alerte !
+                <h4><i class="fas fa-thermometer-three-quarters"></i> Conditions Actuelles</h4>
+                <p class="data-value"><span id="air_temp">--</span> °C / <span id="air_humidity"></span> %</p>
+                <p class="alert-message danger-text" id="weather-alert" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i> **Risque d'Hypothermie** imminent. Les moutons doivent rentrer !
                 </p>
             </div>
 

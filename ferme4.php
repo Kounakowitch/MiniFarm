@@ -59,7 +59,7 @@ const FARM_ID = 4;
 
             <div class="control-card control-sheep-status">
                 <h4><i class="fas fa-sheep"></i> Statut des Animaux</h4>
-                <p>Moutons à l'Étable : <span id="sheep_count" class="data-value"></span> / 45</p>
+                <p>Moutons à l'Étable : <span id="sheep_count" ></span> / 45</p>
 
                 <p class="alert-message good-text" id="sheep-location-msg">
                     Localisation : <span id="sheep-location">--</span>
