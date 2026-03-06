@@ -4,9 +4,19 @@ $user = "root";
 $password = "isen";
 $dbname = "smartfarm";
 
-$conn = new mysqli($host, $user, $password, $dbname);
+try {
 
-if ($conn->connect_error) {
-    die("Erreur connexion DB : " . $conn->connect_error);
+$pdo = new PDO(
+"mysql:host=$host;dbname=$dbname;charset=utf8",
+$user,
+$password
+);
+
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+} catch(PDOException $e) {
+
+die("Erreur connexion DB : " . $e->getMessage());
+
 }
 ?>
