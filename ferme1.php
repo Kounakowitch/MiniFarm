@@ -42,7 +42,7 @@
                 <h4><i class="fas fa-water"></i> Système d'Irrigation</h4>
                 <p>Statut : <span id="irrigation-status" class="status good">Automatique</span></p>
                 <p id="soil-status">État du sol : --</p> <!-- Nouveau span pour l'état du sol -->
-                <p>Niveau réservoir :</p>
+                <p>Niveau réservoir :<span id="water_level">--</span></p>
                 <div id="water-bar-container" style="width: 100%; background-color: #ddd; border-radius: 5px; height: 20px;">
                     <div id="water-bar" style="height: 100%; width: 0%; background-color: #4CAF50; border-radius: 5px;"></div>
                 </div>
@@ -52,7 +52,7 @@
 
             <div class="control-card control-fog">
             <h4><i class="fas fa-smog"></i> Niveau de Brouillard</h4>
-            <p>Intensité : <span id="fog-status-label" class="status">Analyse...</span></p>
+            <p>Intensité : <span id="air_humidity">--</span></p>
             
             <div class="fog-bar-container" style="width: 100%; background-color: #eee; border-radius: 5px; height: 15px; margin: 10px 0;">
                 <div id="fog-bar" style="height: 100%; width: 0%; background-color: #3498db; border-radius: 5px; transition: width 0.5s;"></div>
@@ -70,7 +70,7 @@
 
             <div class="control-card control-temperature">
                 <h4><i class="fas fa-thermometer-three-quarters"></i> Température Actuelle</h4>
-                <p class="data-value"><span id="air_temp">--</span> °C</p>
+                <p><span id="air_temp">--</span> °C </p>
                 <p class="alert-message warning-text" id="gel-alert" style="display:none;">
                     <i class="fas fa-exclamation-triangle"></i> **Risque de Gel** imminent (< 3°C). Déclenchement de l'alerte !
                 </p>
@@ -124,6 +124,7 @@
         <div class="charts-grid">
             <div class="chart-card">
                 <h4>Humidité du Sol (%)</h4>
+                <p><span id="soil_humidity">--</span></p>
                 <canvas id="soilHumidityChart"></canvas>
             </div>
 
