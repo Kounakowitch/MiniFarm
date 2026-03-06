@@ -24,14 +24,14 @@ try {
     // =========================
     // MOYENNES GLOBALES
     // =========================
-    $stmtGlobal = $pdo->prepare("
-        SELECT
-            AVG(air_temp) as temp_global,
-            AVG(air_humidity) as humi_global,
-            AVG(water_level) as water_global,
-            AVG(photoresistor) as light_global,
-            AVG(consommation) as energy_global
-        FROM sensor_data
+    $stmt2 = $pdo->prepare("
+    SELECT
+        ROUND(AVG(air_temp),1) as temp_global,
+        ROUND(AVG(air_humidity),1) as humi_global,
+        ROUND(AVG(water_level),1) as water_global,
+        ROUND(AVG(photoresistor),0) as light_global,
+        ROUND(AVG(consommation),1) as energy_global
+    FROM sensor_data
     ");
 
     $stmtGlobal->execute();
