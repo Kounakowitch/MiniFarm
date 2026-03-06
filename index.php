@@ -29,12 +29,13 @@
         <p class="data-last-update">Dernière mise à jour : <span id="last-update-time">--:--:--</span></p>
 
         <div class="data-cards-grid">
-            <div class="data-card"><i class="fas fa-thermometer-half"></i> Température: <span id="temp-global">0.0</span>°C</div>
-            <div class="data-card"><i class="fas fa-tint"></i> Humidité: <span id="humi-global">0</span>%</div>
-            <div class="data-card"><i class="fas fa-clock"></i> Heure Locale: <span id="time-display">--:--</span></div>
-            <div class="data-card"><i class="fas fa-water"></i> Niveau d'eau: <span id="water-global">0</span>%</div>
-            <div class="data-card"><i class="fas fa-sun"></i> Luminosité: <span id="light-global">0</span> Lux</div>
-            <div class="data-card"><i class="fas fa-sun"></i> Energie: <span id="energy-global">134</span> kWh</div>
+            <div class="data-card"><i class="fas fa-thermometer-half"></i> Température: <span id="temp-global"></span>°C</div>
+            <div class="data-card"><i class="fas fa-tint"></i> Humidité: <span id="humi-global"></span>%</div>
+            <div class="data-card"><i class="fas fa-clock"></i> Heure Locale: <span id="time-display"></span></div>
+            <div class="data-card"><i class="fas fa-water"></i> Niveau d'eau: <span id="water-global"></span>%</div>
+            <div class="data-card"><i class="fas fa-sun"></i> Luminosité: <span id="light-global"></span> Lux</div>
+            <div class="data-card"><i class="fas fa-sun"></i> Energie: <span id="energy-global"></span> kWh</div>
+            
         </div>
 
         
