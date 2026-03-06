@@ -8,15 +8,19 @@ $farm = $_GET['farm'] ?? 1;
 
 try {
 
-$stmt = $pdo->prepare(" SELECT * 
-        FROM sensor_data 
-        WHERE farm_id = $farm_id
-        ORDER BY timestamp DESC
-        LIMIT 1");
+$stmt = $pdo->prepare("
+    SELECT * 
+    FROM sensor_data 
+    WHERE farm_id = ?
+    ORDER BY timestamp DESC
+    LIMIT 1
+");
 
 $stmt->execute([$farm]);
 
 $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+header('Content-Type: application/json');
 
 echo json_encode($data);
 
