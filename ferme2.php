@@ -66,7 +66,7 @@ const FARM_ID = 2;
 
             <div class="control-card control-temperature">
                 <h4><i class="fas fa-thermometer-three-quarters"></i> Conditions Actuelles</h4>
-                <p class="data-value"><span id="air_temp">--</span> °C / <span id="humi-actuelle">--</span> %</p>
+                <p class="data-value"><span id="air_temp">--</span> °C / <span id="soil_humidity">--</span> %</p>
                 <p class="alert-message danger-text" id="weather-alert" style="display: none;">
                     <i class="fas fa-exclamation-triangle"></i> **Risque d'Hypothermie** imminent. Les moutons doivent rentrer !
                 </p>
