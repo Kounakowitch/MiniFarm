@@ -154,7 +154,9 @@ data.energy_global ?? "--";
 
 function fetchDataFromAPI() {
 
-fetch(`api_data.php?farm=${FARM_ID}`)
+const farm = typeof FARM_ID !== "undefined" ? FARM_ID : 1;
+
+fetch(`api_data.php?farm=${farm}`)
 
 .then(response => response.json())
 
