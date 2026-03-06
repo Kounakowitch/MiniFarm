@@ -125,6 +125,26 @@ if(document.getElementById("consommation"))
 document.getElementById("consommation").textContent =
 data.consommation ?? "--";
 
+if(document.getElementById("temp-global"))
+document.getElementById("temp-global").textContent =
+data.temp_global ?? "--";
+
+if(document.getElementById("humi-global"))
+document.getElementById("humi-global").textContent =
+data.humi_global ?? "--";
+
+if(document.getElementById("water-global"))
+document.getElementById("water-global").textContent =
+data.water_global ?? "--";
+
+if(document.getElementById("light-global"))
+document.getElementById("light-global").textContent =
+data.light_global ?? "--";
+
+if(document.getElementById("energy-global"))
+document.getElementById("energy-global").textContent =
+data.energy_global ?? "--";
+
 }
 
 
