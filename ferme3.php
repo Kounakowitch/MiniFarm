@@ -67,10 +67,7 @@
                 <h4>
                     <i class="fas fa-thermometer-three-quarters"></i> Conditions Actuelles
                 </h4>
-                <p class="data-value">
-                    <span id="temp-actuelle">--</span> °C /
-                    <span id="humi-actuelle">--</span> %
-                </p>
+                    <p class="data-value"><span id="air_temp">--</span> °C / <span id="air_humidity"></span> %</p>
                 <p class="alert-message danger-text" id="gel-alert" style="display: none;">
                     <i class="fas fa-snowflake"></i> **ALERTE GEL!** Température critique. Récolte d'urgence à planifier.
                 </p>
