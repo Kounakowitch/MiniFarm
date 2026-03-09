@@ -148,16 +148,30 @@ data.energy_global ?? "--";
 }
 
 
-// =======================
-// FETCH API
-// =======================
-
-// =======================
-// FETCH API
-// =======================
-
 function fetchDataFromAPI() {
 
 const farm = typeof FARM_ID !== "undefined" ? FARM_ID : 1;
 
-git pull
+fetch(`api_data.php?farm=${farm}`)
+.then(response => response.text())
+.then(data => {
+
+console.log("Réponse serveur :", data);
+
+})
+.catch(error => {
+
+console.error("Erreur API :", error);
+
+});
+
+}
+
+
+// =======================
+// LANCEMENT
+// =======================
+
+fetchDataFromAPI();
+
+setInterval(fetchDataFromAPI, 2000);
