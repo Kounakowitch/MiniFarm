@@ -31,7 +31,6 @@
         <div class="data-cards-grid">
             <div class="data-card"><i class="fas fa-thermometer-half"></i> Température: <span id="temp-global"></span>°C</div>
             <div class="data-card"><i class="fas fa-tint"></i> Humidité: <span id="humi-global"></span>%</div>
-            <div class="data-card"><i class="fas fa-clock"></i> Heure Locale: <span id="time-display"></span></div>
             <div class="data-card"><i class="fas fa-water"></i> Niveau d'eau: <span id="water-global"></span>%</div>
             <div class="data-card"><i class="fas fa-sun"></i> Luminosité: <span id="light-global"></span> Lux</div>
             <div class="data-card"><i class="fas fa-sun"></i> Energie: <span id="energy-global"></span> kWh</div>

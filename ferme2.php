@@ -93,9 +93,6 @@ const FARM_ID = 2;
 
             <div class="progress-card">
                 <h4>Localisation des Moutons</h4>
-                <div id="sheep_bar_container" style="width: 100%; background-color: #ddd; border-radius: 5px; height: 20px;">
-                    <div id="sheep_bar" style="height: 100%; width: 0%; background-color: #4CAF50; border-radius: 5px;"></div>
-                </div>
                 <p class="progress-label">Dans la Pâture : <span id="sheep_count">--</span> moutons</p>
                 <p class="alert-message good-text" id="sheep-status-message">
                     <i class="fas fa-check-circle"></i> Conditions stables.
