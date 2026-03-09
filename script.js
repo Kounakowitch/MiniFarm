@@ -152,20 +152,21 @@ data.energy_global ?? "--";
 // FETCH API
 // =======================
 
+// =======================
+// FETCH API
+// =======================
+
 function fetchDataFromAPI() {
 
 const farm = typeof FARM_ID !== "undefined" ? FARM_ID : 1;
 
 fetch(`api_data.php?farm=${farm}`)
-
-.then(response => response.json())
-
+.then(response => response.text())
 .then(data => {
 
-updateDashboard(data);
+console.log("Réponse serveur :", data);
 
 })
-
 .catch(error => {
 
 console.error("Erreur API :", error);
