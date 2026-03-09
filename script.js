@@ -153,10 +153,12 @@ function fetchDataFromAPI() {
 const farm = typeof FARM_ID !== "undefined" ? FARM_ID : 1;
 
 fetch(`api_data.php?farm=${farm}`)
-.then(response => response.text())
+.then(response => response.json())
 .then(data => {
 
 console.log("Réponse serveur :", data);
+
+updateDashboard(data);
 
 })
 .catch(error => {
