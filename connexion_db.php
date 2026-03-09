@@ -1,8 +1,8 @@
 <?php
 
 $host = "10.30.50.139";
-$user = "root";
-$password = "";
+$user = "enzo";
+$password = "mot_de_passe";
 $dbname = "smartferme";
 
 try {
