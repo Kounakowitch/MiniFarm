@@ -88,7 +88,6 @@
         </div>
     </section>
 
-
     <hr>
     
     <section class="historical-charts">
@@ -100,7 +99,6 @@
                 <p><span id="soil_humidity">--</span></p>
                 <canvas id="soilHumidityChart"></canvas>
             </div>
-
 
         </div>
 

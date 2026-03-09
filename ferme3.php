@@ -82,7 +82,6 @@
         </div>
     </section>
 
-
     <hr>
 
     <section class="historical-charts">
@@ -120,3 +119,4 @@ const FARM_ID = 3;
 <script src="script.js"></script>
 </body>
 </html>
+
