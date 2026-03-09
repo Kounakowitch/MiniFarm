@@ -82,44 +82,6 @@
         </div>
     </section>
 
-    <hr>
-
-    <section class="logistics-stock">
-        <h3>Logistique et Gestion des Stocks de Légumes</h3>
-
-        <div class="logistics-grid">
-
-            <div class="progress-card">
-                <h4><i class="fas fa-carrot"></i> Stock Carottes</h4>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" id="carrot-stock-progress" style="width: 50%;"></div>
-                </div>
-                <p class="progress-label">Niveau: <span id="carrot-stock-value">50</span>%</p>
-                <p class="alert-message danger-text" id="carrot-warning" style="display: none;">
-                    <i class="fas fa-exclamation-circle"></i> **STOCK BAS !** Planifiez de nouveaux semis.
-                </p>
-            </div>
-
-            <div class="progress-card">
-                <h4><i class="fas fa-apple-alt"></i> Stock Tomates</h4>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" id="tomato-stock-progress" style="width: 75%;"></div>
-                </div>
-                <p class="progress-label">Niveau: <span id="tomato-stock-value">75</span>%</p>
-                <p class="alert-message danger-text" id="tomato-warning" style="display: none;"></p>
-            </div>
-
-            <div class="progress-card">
-                <h4><i class="fas fa-leaf"></i> Stock Salades</h4>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" id="salad-stock-progress" style="width: 25%;"></div>
-                </div>
-                <p class="progress-label">Niveau: <span id="salad-stock-value">25</span>%</p>
-                <p class="alert-message danger-text" id="salad-warning" style="display: none;"></p>
-            </div>
-
-        </div>
-    </section>
 
     <hr>
 

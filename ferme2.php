@@ -35,30 +35,44 @@
     <hr>
 
     <section class="farm-controls-alerts">
-        <h3>Commandes Rapides & Alertes Clés</h3>
+        <h3>Commandes d'Alimentation & Statut des Moutons</h3>
 
         <div class="controls-grid">
 
-            <div class="control-card control-irrigation">
-                <h4><i class="fas fa-gate"></i> Contrôle de la Barrière</h4>
-                <p>Statut de l'accès à l'Étable : <span id="gate-status" class="status good">Ouverte (Auto)</span></p>
-                <div class="toggle-container">
+            <div class="control-card control-gate">
+                <h4><i class="fas fa-door-open"></i> Trappe de Nourriture</h4>
+                <p>Statut Trappe : <span id="trap-status" class="status danger">Fermée</span></p>
+
+                <div class="toggle-container" style="margin-bottom: 15px;">
                     <label class="switch">
-                        <input type="checkbox" id="gate-toggle" checked>
+                        <input type="checkbox" id="trap-toggle">
                         <span class="slider round"></span>
                     </label>
-                    <span id="gate-mode-label">Mode Automatique activé</span>
+                    <span id="trap-mode-label">Mode Manuel de la Trappe</span>
                 </div>
-                <button class="btn-action red-btn" id="manual-gate-btn"><i class="fas fa-times-circle"></i> Fermer Manuellement</button>
+
+                <div class="toggle-container">
+                    <label for="food-choice">Choix du Repas :</label>
+                    <select id="food-choice">
+                        <option value="foin">Foin / Paille (F1)</option>
+                        <option value="legumes">Légumes (F3)</option>
+                    </select>
+                </div>
+
+                <p class="alert-message warning-text" id="feeding-alert-msg"><i class="fas fa-clock"></i> En attente du prochain cycle.</p>
             </div>
 
-            <div class="control-card control-seeding">
-                <p>Niveau réservoir :</p>
-                <div id="water-bar-container" style="width: 100%; background-color: #ddd; border-radius: 5px; height: 20px;">
-                    <div id="water-bar" style="height: 100%; width: 0%; background-color: #4CAF50; border-radius: 5px;"></div>
-                </div>
-                <p id="water-alert" style="color: red; display: none;">Réservoir faible !</p>
-                <div class="toggle-container"></div>
+            <div class="control-card control-sheep-status">
+                <h4><i class="fas fa-sheep"></i> Statut des Animaux</h4>
+                <p>Moutons dans la pâture : <span id="sheep_count" ></span> / 45</p>
+
+                <p class="alert-message good-text" id="sheep-location-msg">
+                    Localisation : <span id="sheep-location">--</span>
+                </p>
+
+                <p class="alert-message" id="stable-led-status">
+                    <i class="fas fa-lightbulb"></i> LED Étable : <span id="led-state" class="status danger">Éteinte</span>
+                </p>
             </div>
 
             <div class="control-card control-temperature">
@@ -81,44 +95,9 @@
         </div>
     </section>
 
-    <hr>
 
-    <section class="logistics-stock">
-        <h3>Statut des Moutons et Gestion de l'Étable</h3>
 
-        <div class="logistics-grid">
 
-            <div class="progress-card">
-                <h4>Localisation des Moutons</h4>
-                <p class="progress-label">Dans la Pâture : <span id="sheep_count">--</span> moutons</p>
-                <p class="alert-message good-text" id="sheep-status-message">
-                    <i class="fas fa-check-circle"></i> Conditions stables.
-                </p>
-            </div>
-
-            <div class="progress-card">
-                <h4>Présence de moutons</h4>
-                <p>Présence de mouton devant la trappe : <span id="presence_mouton">--</span></p>
-            </div>
-
-        </div>
-    </section>
-
-    <hr>
-
-    <section class="historical-charts">
-        <h3>Analyse des Conditions Environnementales (7 Derniers Jours)</h3>
-        <div class="charts-grid">
-            <div class="chart-card">
-                <h4>Température de la Pâture (°C)</h4>
-                <canvas id="pastureTempChart"></canvas>
-            </div>
-            <div class="chart-card">
-                <h4>Humidité de l'Air (%)</h4>
-                <canvas id="airHumidityChart"></canvas>
-            </div>
-        </div>
-    </section>
 </main>
 
 <script>
