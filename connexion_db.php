@@ -2,7 +2,7 @@
 
 $host = "10.30.50.139";
 $user = "isen";
-$password = "isen";
+$password = "isen!";
 $dbname = "smartferme";
 
 try {
