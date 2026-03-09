@@ -156,7 +156,7 @@ function fetchDataFromAPI() {
 
 const farm = typeof FARM_ID !== "undefined" ? FARM_ID : 1;
 
-fetch(`api_data.php?farm=${farm}`)
+fetch(`http://10.30.50.139/api_data.php?farm=${farm}`)
 
 .then(response => response.json())
 
