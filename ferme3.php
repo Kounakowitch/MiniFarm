@@ -36,20 +36,7 @@
                         <h4><i class="fas fa-water"></i> Système d'Irrigation</h4>
                         <button class="btn-action green-btn" id="manual-irrigation-btn"><i class="fas fa-tint"></i> Arroser 5 min (Manuel)</button>
                     </div>
-                    <div class="control-card control-seeding">
-                        <h4><i class="fas fa-clock"></i> Arrosage Automatique</h4>
-                        <p>Prochain cycle : 
-                            <span id="next-irrigation-time" style="font-weight: 700;">--:--</span>
-                        </p>
-                        <div class="toggle-container">
-                    <label class="switch">
-                        <input type="checkbox" id="seeding-toggle" checked disabled>
-                        <span class="slider round"></span>
-                    </label>
-                    <span id="seeding-mode-label">Déclenchement conditionnel</span>
-                </div>
-                <p class="alert-message" id="irrigation-alert-msg"><i class="fas fa-check-circle"></i> Conditions actuelles optimales.</p>
-            </div>
+                    
             <div class="control-card control-temperature">
                 <h4>
                     <i class="fas fa-thermometer-three-quarters"></i> Conditions Actuelles
