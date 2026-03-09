@@ -34,16 +34,6 @@
                 <div class="controls-grid">
                     <div class="control-card control-irrigation">
                         <h4><i class="fas fa-water"></i> Système d'Irrigation</h4>
-                        <p>Statut : 
-                            <span id="irrigation-status" class="status good">Automatique</span>
-                        </p>
-                        <div class="toggle-container">
-                            <label class="switch">
-                                <input type="checkbox" id="irrigation-toggle" checked>
-                                <span class="slider round"></span>
-                            </label>
-                            <span id="irrigation-mode-label">Mode Auto ON (Calculé)</span>
-                        </div>
                         <button class="btn-action green-btn" id="manual-irrigation-btn"><i class="fas fa-tint"></i> Arroser 5 min (Manuel)</button>
                     </div>
                     <div class="control-card control-seeding">
