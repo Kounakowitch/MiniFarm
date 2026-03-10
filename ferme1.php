@@ -42,7 +42,7 @@
                 <h4><i class="fas fa-water"></i> Système d'Irrigation</h4>
                 <p>Statut : <span id="irrigation-status" class="status good">Automatique</span></p>
                 <p id="soil-status">État du sol :
-                    Humidité: <span id="soil_humidity">--</span>%</p> <!-- Nouveau span pour l'état du sol -->
+                    <p></p>Humidité: <span id="soil_humidity">--</span>%</p> <!-- Nouveau span pour l'état du sol -->
                 <p>Niveau réservoir :</p>
                 <div id="water-bar-container" style="width: 100%; background-color: #ddd; border-radius: 5px; height: 20px;">
                     <div id="water-bar" style="height: 100%; width: 0%; background-color: #4CAF50; border-radius: 5px;"></div>
