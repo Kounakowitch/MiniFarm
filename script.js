@@ -217,3 +217,24 @@ console.error("Erreur API :", error);
 fetchDataFromAPI();
 
 setInterval(fetchDataFromAPI, 2000);
+
+let pompeActive = false;
+const manualIrrigationBtn = document.getElementById("manual-irrigation-btn");
+
+if (manualIrrigationBtn) {
+    manualIrrigationBtn.addEventListener('click', () => {
+        pompeActive = !pompeActive;
+        const valeur = pompeActive ? "1" : "0";
+        const farm = typeof FARM_ID !== "undefined" ? FARM_ID : 1;
+
+        fetch("http://10.30.50.139:5000/commande", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ farm_id: farm, valeur: valeur })
+        });
+
+        manualIrrigationBtn.innerHTML = pompeActive
+            ? '<i class="fas fa-tint"></i> Arrêter 🔴'
+            : '<i class="fas fa-tint"></i> Arroser 💧';
+    });
+}
