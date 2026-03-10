@@ -74,7 +74,6 @@
                 <div class="progress-bar-container" style="height: 10px; margin-top: 10px;">
                     <div class="progress-bar" style="width: 45%; background-color: #673AB7;"></div>
                 </div>
-                <p class="progress-label" style="font-size: 0.8em; margin-top: 5px;">Utilisation : Normale</p>
             </div>
 
         </div>
