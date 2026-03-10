@@ -218,23 +218,47 @@ fetchDataFromAPI();
 
 setInterval(fetchDataFromAPI, 2000);
 
+// BOUTON 1 - Arrosage ferme3
 let pompeActive = false;
 const manualIrrigationBtn = document.getElementById("manual-irrigation-btn");
-
 if (manualIrrigationBtn) {
     manualIrrigationBtn.addEventListener('click', () => {
         pompeActive = !pompeActive;
         const valeur = pompeActive ? "1" : "0";
-        const farm = typeof FARM_ID !== "undefined" ? FARM_ID : 1;
-
         fetch("http://10.30.50.139:5000/commande", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({ farm_id: farm, valeur: valeur })
+            body: JSON.stringify({ topic: "fermes/ferme3/arrosage", valeur: valeur })
         });
-
         manualIrrigationBtn.innerHTML = pompeActive
             ? '<i class="fas fa-tint"></i> Arrêter 🔴'
             : '<i class="fas fa-tint"></i> Arroser 💧';
+    });
+}
+
+// BOUTON 2 - Envoie 10 sur ferme2/cmd
+const btn2 = document.getElementById("id-bouton-2");
+if (btn2) {
+    btn2.addEventListener('click', () => {
+        fetch("http://10.30.50.139:5000/commande", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ topic: "fermes/ferme2/cmd", valeur: "10" })
+        });
+    });
+}
+
+// BOUTON 3 - Trappe ferme4
+let trappeActive = false;
+const btn3 = document.getElementById("id-bouton-3");
+if (btn3) {
+    btn3.addEventListener('click', () => {
+        trappeActive = !trappeActive;
+        const valeur = trappeActive ? "1" : "0";
+        fetch("http://10.30.50.139:5000/commande", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ topic: "fermes/ferme4/trap", valeur: valeur })
+        });
     });
 }
