@@ -49,7 +49,7 @@
 
             <article class="farm-card">
                 <h3>Ferme 1 - Les Champs</h3>
-                <p>Statut Général : <span class="status good">Optimal</span></p>
+                <p>Statut Général : <span id="general-status" class="status good">Optimal</span></p>
                 <ul>
                     <li><i class="fas fa-seedling"></i> Cultures : Avoine, Blé, Orge</li>
                     <li><i class="fas fa-chart-line"></i> Tendance : Rendement Stable (+0.5%)</li>

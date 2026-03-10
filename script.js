@@ -83,6 +83,23 @@ if (document.getElementById("water_level")) {
     }
 }
 
+const status = document.getElementById("general-status");
+
+if (status && value !== null) {
+
+    if (percent < 20) {
+        status.textContent = "Critique";
+        status.className = "status danger";
+    } else if (percent < 50) {
+        status.textContent = "Moyen";
+        status.className = "status warning";
+    } else {
+        status.textContent = "Optimal";
+        status.className = "status good";
+    }
+
+}
+
 
 // =======================
 // POMPE
