@@ -34,6 +34,7 @@
                 <div class="controls-grid">
                     <div class="control-card control-irrigation">
                         <h4><i class="fas fa-water"></i> Système d'Irrigation</h4>
+                        <p id="soil-status">Humidité du sol : --</p>
                         <button class="btn-action green-btn" id="manual-irrigation-btn"><i class="fas fa-tint"></i> Arroser 5 min (Manuel)</button>
                     </div>
                     
@@ -61,22 +62,6 @@
 
     <hr>
 
-    <section class="historical-charts">
-        <h3>Analyse des Conditions du Potager (7 Derniers Jours)</h3>
-
-        <div class="charts-grid">
-            <div class="chart-card">
-                <h4>Température du Sol (°C)</h4>
-                <canvas id="soilTempChart"></canvas>
-            </div>
-
-            <div class="chart-card">
-                <h4>Humidité du Sol (%)</h4>
-                <canvas id="soilHumidityChart"></canvas>
-            </div>
-        </div>
-
-    </section>
 
     <div id="seeding-modal" class="modal">
         <div class="modal-content">
