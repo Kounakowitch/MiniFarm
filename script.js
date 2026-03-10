@@ -36,12 +36,6 @@ if (document.getElementById("steam_sensor")) {
         percent = Math.max(0, Math.min(100, percent));
 
         document.getElementById("fog-bar").style.width = percent + "%";
-
-        if (percent < 20) {
-            document.getElementById("fog-alert-msg").style.display = "block";
-        } else {
-            document.getElementById("fog-alert-msg").style.display = "none";
-        }
     }
 }
 // =======================
