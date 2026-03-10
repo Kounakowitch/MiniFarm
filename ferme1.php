@@ -52,14 +52,11 @@
 
             <div class="control-card control-fog">
             <h4><i class="fas fa-smog"></i> Niveau de Brouillard</h4>
-            <p>Intensité : <span id="">--</span></p>
+            <p>Intensité : <span id="steam_sensor">--</span></p>
             
             <div class="fog-bar-container" style="width: 100%; background-color: #eee; border-radius: 5px; height: 15px; margin: 10px 0;">
                 <div id="fog-bar" style="height: 100%; width: 0%; background-color: #3498db; border-radius: 5px; transition: width 0.5s;"></div>
             </div>
-            
-            <p class="data-value" style="font-size: 0.9em;"><span id="fog-raw-value">0</span> / 4095</p>
-            
             <p class="alert-message" id="fog-alert-msg" style="margin-top:10px;">
                 <i class="fas fa-info-circle"></i> <span id="fog-advice">Calcul des données...</span>
             </p>
@@ -91,8 +88,6 @@
     <hr>
     
     <section class="historical-charts">
-        <h3>Analyse des Conditions du Sol (7 Derniers Jours)</h3>
-
         <div class="charts-grid">
             <div class="chart-card">
                 <h4>Humidité du Sol (%)</h4>
