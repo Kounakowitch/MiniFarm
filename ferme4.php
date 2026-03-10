@@ -42,7 +42,21 @@
                 <h4><i class="fas fa-door-open"></i> Trappe de Nourriture</h4>
 
                 <div class="toggle-container" style="margin-bottom: 15px;">
-                    <button class="btn-action green-btn" id="manual-trappe-btn"><i class="fas fa-tint"></i> Ouvrir Trappe </button>
+                    <label class="switch">
+                        <input type="checkbox" id="trap-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span id="trap-mode-label">Mode Manuel de la Trappe</span>
+                </div>
+
+                <p class="alert-message warning-text" id="feeding-alert-msg"><i class="fas fa-clock"></i> En attente du prochain cycle.</p>
+            </div>
+
+            <div class="control-card control-gate">
+                <h4><i class="fas fa-door-open"></i> Barrière pâture</h4>
+
+                <div class="toggle-container" style="margin-bottom: 15px;">
+                    <button class="btn-action green-btn" id="manual-barrière-btn4"><i class="fas fa-tint"></i> Ouvrir Barrière Pâturage </button>
                 </div>
 
                 <p class="alert-message warning-text" id="feeding-alert-msg"><i class="fas fa-clock"></i> En attente du prochain cycle.</p>
