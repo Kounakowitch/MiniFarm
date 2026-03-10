@@ -237,7 +237,7 @@ if (manualIrrigationBtn) {
 }
 
 // BOUTON 2 - Envoie 10 sur ferme2/cmd
-const btn2 = document.getElementById("id-bouton-2");
+const btn2 = document.getElementById("manual-barrière-btn");
 if (btn2) {
     btn2.addEventListener('click', () => {
         fetch("http://10.30.50.139:5000/commande", {
@@ -248,13 +248,12 @@ if (btn2) {
     });
 }
 
+
 // BOUTON 3 - Trappe ferme4
-let trappeActive = false;
-const btn3 = document.getElementById("id-bouton-3");
-if (btn3) {
-    btn3.addEventListener('click', () => {
-        trappeActive = !trappeActive;
-        const valeur = trappeActive ? "1" : "0";
+const trapToggle = document.getElementById("trap-toggle");
+if (trapToggle) {
+    trapToggle.addEventListener('change', () => {
+        const valeur = trapToggle.checked ? "1" : "0";
         fetch("http://10.30.50.139:5000/commande", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
