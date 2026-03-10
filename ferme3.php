@@ -34,7 +34,15 @@
                 <div class="controls-grid">
                     <div class="control-card control-irrigation">
                         <h4><i class="fas fa-water"></i> Système d'Irrigation</h4>
-                        <p id="soil-status">Humidité du sol : --</p>
+                        <p id="soil-status">État du sol :
+                            <p></p>Humidité: <span id="soil_humidity">--</span>%</p> <!-- Nouveau span pour l'état du sol -->
+                        <p>Niveau réservoir :</p>
+                        <p style="display:none;">niveau : <span id="water_level">--</span></p>
+                        <div id="water-bar-container" style="width: 100%; background-color: #ddd; border-radius: 5px; height: 20px;">
+                            <div id="water-bar" style="height: 100%; width: 0%; background-color: #4CAF50; border-radius: 5px;"></div>
+                        </div>
+                        <p id="water-alert" style="color: red; display: none;">Réservoir faible !</p>
+                        <div class="toggle-container"></div>
                         <button class="btn-action green-btn" id="manual-irrigation-btn"><i class="fas fa-tint"></i> Arroser (Manuel)</button>
                     </div>
 
