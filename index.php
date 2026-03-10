@@ -49,7 +49,7 @@
 
             <article class="farm-card">
                 <h3>Ferme 1 - Les Champs</h3>
-                <p>Statut Général : <span id="general-status" class="status good">Optimal</span></p>
+                <p>Statut Général : <span id="general-status" class="status good"></span></p>
                 <p style="display:none;">
                     niveau : <span id="water_level">--</span>
                 </p>
