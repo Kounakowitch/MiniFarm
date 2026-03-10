@@ -35,5 +35,6 @@ void callback(char* topic, byte* payload, unsigned int length);
 void publishCountF4();
 void displayCount();
 void displayFinished();
+void publishMessage(const String& ferme, const String& sensor, const String& msg);
 
 #endif
