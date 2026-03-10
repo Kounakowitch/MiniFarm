@@ -37,6 +37,13 @@
                         <p id="soil-status">Humidité du sol : --</p>
                         <button class="btn-action green-btn" id="manual-irrigation-btn"><i class="fas fa-tint"></i> Arroser 5 min (Manuel)</button>
                     </div>
+
+                <div class="control-card control-fog">
+            <h4><i class="fas fa-smog"></i> Niveau de Brouillard</h4>
+            
+            <div class="fog-bar-container" style="width: 100%; background-color: #eee; border-radius: 5px; height: 15px; margin: 10px 0;">
+                <div id="fog-bar" style="height: 100%; width: 0%; background-color: #3498db; border-radius: 5px; transition: width 0.5s;"></div>
+            </div>
                     
             <div class="control-card control-temperature">
                 <h4>
