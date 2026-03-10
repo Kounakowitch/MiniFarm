@@ -48,7 +48,7 @@
                         <input type="checkbox" id="trap-toggle">
                         <span class="slider round"></span>
                     </label>
-                    <span id="trap-mode-label">Mode Manuel de la Trappe</span>
+                    <button class="btn-action green-btn" id="manual-irrigation-btn"><i class="fas fa-tint"></i> Arroser 5 min (Manuel)</button>
                 </div>
 
                 <div class="toggle-container">
