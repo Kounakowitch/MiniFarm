@@ -36,12 +36,6 @@ if (document.getElementById("steam_sensor")) {
         percent = Math.max(0, Math.min(100, percent));
 
         document.getElementById("fog-bar").style.width = percent + "%";
-
-        if (percent < 20) {
-            document.getElementById("fog-alert-msg").style.display = "block";
-        } else {
-            document.getElementById("fog-alert-msg").style.display = "none";
-        }
     }
 }
 // =======================
@@ -79,16 +73,32 @@ if (document.getElementById("water_level")) {
         let percent = ((value - min) / (max - min)) * 100;
         percent = Math.max(0, Math.min(100, percent));
 
-        document.getElementById("water-bar").style.width = percent + "%";
+        const waterBar = document.getElementById("water-bar");
+        const waterAlert = document.getElementById("water-alert");
 
-        if (percent < 20) {
-            document.getElementById("water-alert").style.display = "block";
-        } else {
-            document.getElementById("water-alert").style.display = "none";
+        if (waterBar) {
+            waterBar.style.width = percent + "%";
+        }
+
+        if (waterAlert) {
+
+            if (percent <= 20) {
+                waterAlert.style.display = "block";
+                waterAlert.textContent = "⚠️ Réservoir presque vide";
+            }
+
+            else if (percent >= 80) {
+                waterAlert.style.display = "block";
+                waterAlert.textContent = "💧 Réservoir presque plein";
+            }
+
+            else {
+                waterAlert.style.display = "none";
+            }
+
         }
     }
 }
-
 
 // =======================
 // POMPE

@@ -60,9 +60,6 @@
                     <div id="fog-bar" style="height: 100%; width: 0%; background-color: #3498db; border-radius: 5px; transition: width 0.5s;"></div>
                 </div>
             </div>
-            <p class="alert-message" id="fog-alert-msg" style="margin-top:10px;">
-                <i class="fas fa-info-circle"></i> 
-            </p>
             <div class="control-card control-temperature">
                 <h4><i class="fas fa-thermometer-three-quarters"></i> Conditions Actuelles</h4>
                 <p class="data-value"><span id="air_temp">--</span> °C / <span id="air_humidity"></span> %</p>
@@ -77,7 +74,6 @@
                 <div class="progress-bar-container" style="height: 10px; margin-top: 10px;">
                     <div class="progress-bar" style="width: 45%; background-color: #673AB7;"></div>
                 </div>
-                <p class="progress-label" style="font-size: 0.8em; margin-top: 5px;">Utilisation : Normale</p>
             </div>
 
         </div>

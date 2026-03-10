@@ -5,6 +5,7 @@
 #include "soilhumidity.h"
 #include "connect.h"
 #include "lcd.h"
+#include "WaterPump.h"
 
 
 const int BUTTON_PIN = 5;
@@ -23,6 +24,7 @@ void setup() {
   initWaterlevel();
 
   setup_LCD();
+  setup_WaterPump();
 
   // init MQTT
   setup_wifi();

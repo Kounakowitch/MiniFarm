@@ -40,7 +40,6 @@
 
             <div class="control-card control-gate">
                 <h4><i class="fas fa-door-open"></i> Trappe de Nourriture</h4>
-                <p>Statut Trappe : <span id="trap-status" class="status danger">Fermée</span></p>
 
                 <div class="toggle-container" style="margin-bottom: 15px;">
                     <label class="switch">
@@ -50,12 +49,14 @@
                     <span id="trap-mode-label">Mode Manuel de la Trappe</span>
                 </div>
 
-                <div class="toggle-container">
-                    <label for="food-choice">Choix du Repas :</label>
-                    <select id="food-choice">
-                        <option value="foin">Foin / Paille (F1)</option>
-                        <option value="legumes">Légumes (F3)</option>
-                    </select>
+                <p class="alert-message warning-text" id="feeding-alert-msg"><i class="fas fa-clock"></i> En attente du prochain cycle.</p>
+            </div>
+
+            <div class="control-card control-gate">
+                <h4><i class="fas fa-door-open"></i> Barrière pâture</h4>
+
+                <div class="toggle-container" style="margin-bottom: 15px;">
+                    <button class="btn-action green-btn" id="manual-barrière-btn4"><i class="fas fa-tint"></i> Ouvrir Barrière Pâturage </button>
                 </div>
 
                 <p class="alert-message warning-text" id="feeding-alert-msg"><i class="fas fa-clock"></i> En attente du prochain cycle.</p>
@@ -63,7 +64,7 @@
 
             <div class="control-card control-sheep-status">
                 <h4><i class="fas fa-sheep"></i> Statut des Animaux</h4>
-                <p>Moutons à l'Étable : <span id="sheep_count" ></span> / 45</p>
+                <p>Moutons à l'Étable : <span id="sheep_count" ></span> / 10</p>
 
                 <p class="alert-message good-text" id="sheep-location-msg">
                     Localisation : <span id="sheep-location">--</span>
@@ -88,7 +89,6 @@
                 <div class="progress-bar-container" style="height: 10px; margin-top: 10px;">
                     <div class="progress-bar" style="width: 45%; background-color: #673AB7;"></div>
                 </div>
-                <p class="progress-label" style="font-size: 0.8em; margin-top: 5px;">Utilisation : Normale</p>
             </div>
 
         </div>
