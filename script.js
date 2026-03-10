@@ -261,3 +261,15 @@ if (trapToggle) {
         });
     });
 }
+
+// BOUTON 2 - Envoie 10 sur ferme4/cmd
+const btn4 = document.getElementById("manual-barrière-btn4");
+if (btn2) {
+    btn2.addEventListener('click', () => {
+        fetch("http://10.30.50.139:5000/commande", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ topic: "fermes/ferme4/cmd", valeur: "10" })
+        });
+    });
+}
