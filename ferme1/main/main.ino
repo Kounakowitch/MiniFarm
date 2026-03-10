@@ -5,9 +5,12 @@
 #include "soilhumidity.h"
 #include "connect.h"
 
-
+// bouton
 const int BUTTON_PIN = 5;
 bool lastButtonState = HIGH;
+// intervalle d'envoi des données
+unsigned long lastSend = 0;
+const unsigned long sendInterval = 30000;
 
 void setup() {
   Serial.begin(9600);
@@ -31,32 +34,27 @@ void loop() {
   // envoi data mqtt sur appui bouton
   if (!client.connected()) reconnect();
   client.loop();
-
-  bool buttonState = digitalRead(BUTTON_PIN);
-
-  if (buttonState != lastButtonState) {
-    delay(50); // anti-rebond
-    if (digitalRead(BUTTON_PIN) == buttonState) {
       
-      // Lecture des capteurs, stockage des données
-      int lumi = readPhotoSensor();
-      DHTData temp_hum = readTemperatureHumidity();
-      double temperature = temp_hum.temperature;
-      double humidity = temp_hum.humidity;
-      int steam = readSteam();
-      int waterlevel = readWaterlevel();
-      int soilhumidity = readSoilhumidity();
+  // Lecture des capteurs, stockage des données
+  int lumi = readPhotoSensor();
+  DHTData temp_hum = readTemperatureHumidity();
+  double temperature = temp_hum.temperature;
+  double humidity = temp_hum.humidity;
+  int steam = readSteam();
+  int waterlevel = readWaterlevel();
+  int soilhumidity = readSoilhumidity();
 
-      publishMessage("ferme1", "steam_sensor", String(steam));
-      publishMessage("ferme1", "temperature_sensor", String(temperature));
-      publishMessage("ferme1", "humidity_sensor", String(humidity));
-      publishMessage("ferme1", "soil_humidity_sensor", String(soilhumidity));
-      publishMessage("ferme1", "photoresistor", String(lumi));
-      publishMessage("ferme1", "water_level_sensor", String(waterlevel));
+  // envoi data mqtt toutes les 30s sans bloquer
+  if (millis() - lastSend >= sendInterval) {
 
-      lastButtonState = buttonState;
-    }
+    publishMessage("ferme1", "steam_sensor", String(steam));
+    publishMessage("ferme1", "temperature_sensor", String(temperature));
+    publishMessage("ferme1", "humidity_sensor", String(humidity));
+    publishMessage("ferme1", "soil_humidity_sensor", String(soilhumidity));
+    publishMessage("ferme1", "photoresistor", String(lumi));
+    publishMessage("ferme1", "water_level_sensor", String(waterlevel));
+
+    lastSend = millis();
   }
-
 
 }

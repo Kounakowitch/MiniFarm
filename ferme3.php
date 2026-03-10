@@ -34,8 +34,10 @@
                 <div class="controls-grid">
                     <div class="control-card control-irrigation">
                         <h4><i class="fas fa-water"></i> Système d'Irrigation</h4>
+                        <p id="soil-status">Humidité du sol : --</p>
                         <button class="btn-action green-btn" id="manual-irrigation-btn"><i class="fas fa-tint"></i> Arroser 5 min (Manuel)</button>
                     </div>
+
                     
             <div class="control-card control-temperature">
                 <h4>
@@ -45,6 +47,13 @@
                 <p class="alert-message danger-text" id="gel-alert" style="display: none;">
                     <i class="fas fa-snowflake"></i> **ALERTE GEL!** Température critique. Récolte d'urgence à planifier.
                 </p>
+            </div>
+
+            <div class="control-card control-fog">
+            <h4><i class="fas fa-smog"></i> Niveau de Brouillard</h4>
+            
+            <div class="fog-bar-container" style="width: 100%; background-color: #eee; border-radius: 5px; height: 15px; margin: 10px 0;">
+                <div id="fog-bar" style="height: 100%; width: 0%; background-color: #3498db; border-radius: 5px; transition: width 0.5s;"></div>
             </div>
 
             <div class="control-card control-energy">
@@ -59,24 +68,6 @@
         </div>
     </section>
 
-    <hr>
-
-    <section class="historical-charts">
-        <h3>Analyse des Conditions du Potager (7 Derniers Jours)</h3>
-
-        <div class="charts-grid">
-            <div class="chart-card">
-                <h4>Température du Sol (°C)</h4>
-                <canvas id="soilTempChart"></canvas>
-            </div>
-
-            <div class="chart-card">
-                <h4>Humidité du Sol (%)</h4>
-                <canvas id="soilHumidityChart"></canvas>
-            </div>
-        </div>
-
-    </section>
 
     <div id="seeding-modal" class="modal">
         <div class="modal-content">
