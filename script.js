@@ -22,9 +22,28 @@ if(document.getElementById("air_humidity"))
 document.getElementById("air_humidity").textContent =
 data.air_humidity ?? "--";
 
-if(document.getElementById("steam_sensor"))
-document.getElementById("steam_sensor").textContent =
-data.steam_sensor ?? "--";
+if (document.getElementById("steam_sensor")) {
+
+    const value = data.steam_sensor ?? null;
+    document.getElementById("steam_sensor").textContent = value ?? "--";
+
+    if (value !== null) {
+
+        const min = 0;
+        const max = 4000;
+
+        let percent = ((value - min) / (max - min)) * 100;
+        percent = Math.max(0, Math.min(100, percent));
+
+        document.getElementById("fog-bar").style.width = percent + "%";
+
+        if (percent < 20) {
+            document.getElementById("fog-alert-msg").style.display = "block";
+        } else {
+            document.getElementById("fog-alert-msg").style.display = "none";
+        }
+    }
+}
 // =======================
 // HUMIDITÉ SOL
 // =======================
