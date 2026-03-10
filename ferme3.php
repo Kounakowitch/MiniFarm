@@ -35,7 +35,7 @@
                     <div class="control-card control-irrigation">
                         <h4><i class="fas fa-water"></i> Système d'Irrigation</h4>
                         <p id="soil-status">Humidité du sol : --</p>
-                        <button class="btn-action green-btn" id="manual-irrigation-btn"><i class="fas fa-tint"></i> Arroser 5 min (Manuel)</button>
+                        <button class="btn-action green-btn" id="manual-irrigation-btn"><i class="fas fa-tint"></i> Arroser (Manuel)</button>
                     </div>
 
             <div class="control-card control-fog">
