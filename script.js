@@ -45,9 +45,28 @@ data.photoresistor ?? "--";
 // NIVEAU EAU
 // =======================
 
-if(document.getElementById("water_level"))
-document.getElementById("water_level").textContent =
-data.water_level ?? "--";
+if (document.getElementById("water_level")) {
+
+    const value = data.water_level ?? null;
+    document.getElementById("water_level").textContent = value ?? "--";
+
+    if (value !== null) {
+
+        const min = 0;
+        const max = 4095;
+
+        let percent = ((value - min) / (max - min)) * 100;
+        percent = Math.max(0, Math.min(100, percent));
+
+        document.getElementById("water-bar").style.width = percent + "%";
+
+        if (percent < 20) {
+            document.getElementById("water-alert").style.display = "block";
+        } else {
+            document.getElementById("water-alert").style.display = "none";
+        }
+    }
+}
 
 
 // =======================
