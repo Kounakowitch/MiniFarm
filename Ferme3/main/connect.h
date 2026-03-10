@@ -3,6 +3,7 @@
 
 #include <WiFi.h>
 #include <PubSubClient.h>
+#include "LCD.h"
 
 // Déclarations externes (objet global défini dans .cpp)
 extern WiFiClient espClient;

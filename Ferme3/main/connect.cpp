@@ -1,6 +1,8 @@
 #include "HardwareSerial.h"
 #include "connect.h"
 
+#include "lcd.h"
+
 // Objets globaux définis ici
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -52,6 +54,13 @@ void callback(char* topic, byte* payload, unsigned int length) {
     lastMsg = msg;
     displayMsg(msg);
   }
+  if (String(topic) == "fermes/ferme2/cmd") {
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("En attente...");
+    lastMsg = "";
+    Serial.println("LCD réinitialisé");
+  }
 }
 
 // ===== RECONNECT =====
@@ -71,6 +80,7 @@ void reconnect() {
       client.subscribe(("fermes/" + FERME_ID + "/soil_humidity_sensor").c_str());
       client.subscribe(("fermes/" + FERME_ID + "/photoresistor").c_str());
       client.subscribe(("fermes/" + FERME_ID + "/water_level_sensor").c_str());
+      client.subscribe("fermes/ferme2/cmd");
       client.subscribe("fermes/ferme3/msg");
       
     } else {

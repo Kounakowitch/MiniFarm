@@ -9,6 +9,8 @@
 
 const int BUTTON_PIN = 5;
 bool lastButtonState = HIGH;
+unsigned long lastSend = 0;
+const unsigned long sendInterval = 3000;
 
 void setup() {
   Serial.begin(9600);
@@ -43,25 +45,26 @@ void loop() {
       if (lastMsg.length() > 0) {
         client.publish("fermes/ferme4/LED", "Oui");
         Serial.println("F4 → LED : Oui");
-        lastMsg = ""; // remet à zéro après envoi
       }
       lastButtonState = buttonState;
     }
   }
   // Lecture des capteurs, stockage des données
-  int lumi = readPhotoSensor();
-  DHTData temp_hum = readTemperatureHumidity();
-  double temperature = temp_hum.temperature;
-  double humidity = temp_hum.humidity;
-  int steam = readSteam();
-  int waterlevel = readWaterlevel();
-  int soilhumidity = readSoilhumidity();
 
-  publishMessage("ferme3", "steam_sensor", String(steam));
-  publishMessage("ferme3", "temperature_sensor", String(temperature));
-  publishMessage("ferme3", "humidity_sensor", String(humidity));
-  publishMessage("ferme3", "soil_humidity_sensor", String(soilhumidity));
-  publishMessage("ferme3", "photoresistor", String(lumi));
-  publishMessage("ferme3", "water_level_sensor", String(waterlevel));
-
+  if (millis() - lastSend >= sendInterval) {
+    int lumi = readPhotoSensor();
+    DHTData temp_hum = readTemperatureHumidity();
+    double temperature = temp_hum.temperature;
+    double humidity = temp_hum.humidity;
+    int steam = readSteam();
+    int waterlevel = readWaterlevel();
+    int soilhumidity = readSoilhumidity();
+    lastSend = millis();
+    publishMessage("ferme3", "steam_sensor", String(steam));
+    publishMessage("ferme3", "temperature_sensor", String(temperature));
+    publishMessage("ferme3", "humidity_sensor", String(humidity));
+    publishMessage("ferme3", "soil_humidity_sensor", String(soilhumidity));
+    publishMessage("ferme3", "photoresistor", String(lumi));
+    publishMessage("ferme3", "water_level_sensor", String(waterlevel));
+  }
 }
