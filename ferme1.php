@@ -41,7 +41,8 @@
             <div class="control-card control-irrigation">
                 <h4><i class="fas fa-water"></i> Système d'Irrigation</h4>
                 <p>Statut : <span id="irrigation-status" class="status good">Automatique</span></p>
-                <p id="soil-status">État du sol :<span id="soil_humidity">--</span></p> <!-- Nouveau span pour l'état du sol -->
+                <p id="soil-status">État du sol :
+                    Humidité: <span id="soil_humidity">--</span>%</p> <!-- Nouveau span pour l'état du sol -->
                 <p>Niveau réservoir :</p>
                 <div id="water-bar-container" style="width: 100%; background-color: #ddd; border-radius: 5px; height: 20px;">
                     <div id="water-bar" style="height: 100%; width: 0%; background-color: #4CAF50; border-radius: 5px;"></div>
@@ -61,11 +62,6 @@
             <p class="alert-message" id="fog-alert-msg" style="margin-top:10px;">
                 <i class="fas fa-info-circle"></i> 
             </p>
-
-    
-
-        </div>
-
             <div class="control-card control-temperature">
                 <h4><i class="fas fa-thermometer-three-quarters"></i> Conditions Actuelles</h4>
                 <p class="data-value"><span id="air_temp">--</span> °C / <span id="air_humidity"></span> %</p>
