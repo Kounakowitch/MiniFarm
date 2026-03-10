@@ -43,7 +43,7 @@
                 <h4><i class="fas fa-door-open"></i> Barrière pâture</h4>
 
                 <div class="toggle-container" style="margin-bottom: 15px;">
-                    <button class="btn-action green-btn" id="manual-irrigation-btn"><i class="fas fa-tint"></i> Ouvrir Barrière Pâturage </button>
+                    <button class="btn-action green-btn" id="manual-barrière-btn"><i class="fas fa-tint"></i> Ouvrir Barrière Pâturage </button>
                 </div>
 
                 <p class="alert-message warning-text" id="feeding-alert-msg"><i class="fas fa-clock"></i> En attente du prochain cycle.</p>
