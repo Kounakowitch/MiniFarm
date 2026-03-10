@@ -41,7 +41,7 @@
             <div class="control-card control-irrigation">
                 <h4><i class="fas fa-water"></i> Système d'Irrigation</h4>
                 <p>Statut : <span id="irrigation-status" class="status good">Automatique</span></p>
-                <p id="soil-status">État du sol : --</p> <!-- Nouveau span pour l'état du sol -->
+                <p id="soil-status">État du sol :<span id="soil_humidity">--</span></p> <!-- Nouveau span pour l'état du sol -->
                 <p>Niveau réservoir :</p>
                 <div id="water-bar-container" style="width: 100%; background-color: #ddd; border-radius: 5px; height: 20px;">
                     <div id="water-bar" style="height: 100%; width: 0%; background-color: #4CAF50; border-radius: 5px;"></div>
@@ -57,7 +57,7 @@
                 <div id="fog-bar" style="height: 100%; width: 0%; background-color: #3498db; border-radius: 5px; transition: width 0.5s;"></div>
             </div>
             <p class="alert-message" id="fog-alert-msg" style="margin-top:10px;">
-                <i class="fas fa-info-circle"></i> <span id="fog-advice">Calcul des données...</span>
+                <i class="fas fa-info-circle"></i> 
             </p>
 
     
@@ -82,24 +82,6 @@
             </div>
 
         </div>
-    </section>
-
-    <section class="historical-charts">
-        <h3>Analyse des Conditions du Sol (7 Derniers Jours)</h3>
-
-        <div class="charts-grid">
-            <div class="chart-card">
-                <h4>Humidité du Sol (%)</h4>
-                <p><span id="soil_humidity">--</span></p>
-                <canvas id="soilHumidityChart"></canvas>
-            </div>
-
-            <div class="chart-card">
-                <h4>Taux de Nutriments (pH)</h4>
-                <canvas id="phLevelChart"></canvas>
-            </div>
-        </div>
-
     </section>
 
 </main>
