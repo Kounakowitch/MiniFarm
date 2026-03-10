@@ -50,22 +50,23 @@
             </div>
 
             <div class="control-card control-fog">
-            <h4><i class="fas fa-smog"></i> Niveau de Brouillard</h4>
-            
-            <div class="fog-bar-container" style="width: 100%; background-color: #eee; border-radius: 5px; height: 15px; margin: 10px 0;">
-                <div id="fog-bar" style="height: 100%; width: 0%; background-color: #3498db; border-radius: 5px; transition: width 0.5s;"></div>
+                <h4><i class="fas fa-smog"></i> Niveau de Brouillard</h4>
+
+                <div class="fog-bar-container" style="width: 100%; background-color: #eee; border-radius: 5px; height: 15px; margin: 10px 0;">
+                    <div id="fog-bar" style="height: 100%; width: 0%; background-color: #3498db; border-radius: 5px; transition: width 0.5s;"></div>
+                </div>
             </div>
 
             <div class="control-card control-energy">
                 <h4><i class="fas fa-bolt"></i> Consommation Énergie</h4>
-                <span id="consommation">--</span> kWh</p>
-                <div class="progress-bar-container" style="height: 10px; margin-top: 10px;">
-                    <div class="progress-bar" style="width: 45%; background-color: #673AB7;"></div>
+                <p><span id="consommation">--</span> kWh</p>
+
+                <div class="progress-bar-container" style="height: 10px; margin-top: 10px; background-color: #eee; border-radius: 5px;">
+                    <div class="progress-bar" style="width: 45%; height: 100%; background-color: #673AB7; border-radius: 5px;"></div>
                 </div>
+
                 <p class="progress-label" style="font-size: 0.8em; margin-top: 5px;">Utilisation : Normale</p>
             </div>
-
-        </div>
     </section>
 
 
