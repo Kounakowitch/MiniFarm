@@ -40,23 +40,11 @@
         <div class="controls-grid">
 
             <div class="control-card control-gate">
-                <h4><i class="fas fa-door-open"></i> Trappe de Nourriture</h4>
-                <p>Statut Trappe : <span id="trap-status" class="status danger">Fermée</span></p>
+                <h4><i class="fas fa-door-open"></i> Barrière pâture</h4>
+                <p>Statut Barrière : <span id="trap-status" class="status danger">Fermée</span></p>
 
                 <div class="toggle-container" style="margin-bottom: 15px;">
-                    <label class="switch">
-                        <input type="checkbox" id="trap-toggle">
-                        <span class="slider round"></span>
-                    </label>
-                    <button class="btn-action green-btn" id="manual-irrigation-btn"><i class="fas fa-tint"></i> Arroser 5 min (Manuel)</button>
-                </div>
-
-                <div class="toggle-container">
-                    <label for="food-choice">Choix du Repas :</label>
-                    <select id="food-choice">
-                        <option value="foin">Foin / Paille (F1)</option>
-                        <option value="legumes">Légumes (F3)</option>
-                    </select>
+                    <button class="btn-action green-btn" id="manual-irrigation-btn"><i class="fas fa-tint"></i> Fermer/Ouvrir Barrière (Manuel)</button>
                 </div>
 
                 <p class="alert-message warning-text" id="feeding-alert-msg"><i class="fas fa-clock"></i> En attente du prochain cycle.</p>
