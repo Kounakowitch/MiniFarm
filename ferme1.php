@@ -89,35 +89,7 @@
     </section>
 
     <hr>
-
-    <section class="logistics-stock">
-        <h3>Logistique et Gestion des Stocks</h3>
-
-        <div class="logistics-grid">
-
-            <div class="progress-card">
-                <h4>Avancement de l'Envoi vers Ferme 4</h4>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" id="delivery-progress" style="width: 75%;"></div>
-                </div>
-                <p class="progress-label"><span id="delivery-value">75</span>% Livré. (Cultures envoyées pour l'Étable)</p>
-            </div>
-
-            <div class="progress-card">
-                <h4>Stock de Cultures Disponibles</h4>
-                <div class="progress-bar-container stock-low"> <div class="progress-bar progress-green-to-red" id="stock-progress" style="width: 25%;"></div>
-                </div>
-                <p class="progress-label">Stock estimé : <span id="stock-value">25</span>%</p>
-                <p class="alert-message danger-text" id="stock-warning">
-                    <i class="fas fa-exclamation-circle"></i> **Stock Bas !** Envoi important vers Ferme 4. Pensez à planifier de nouveaux semis.
-                </p>
-            </div>
-
-        </div>
-    </section>
-
-    <hr>
-
+    
     <section class="historical-charts">
         <h3>Analyse des Conditions du Sol (7 Derniers Jours)</h3>
 
@@ -128,10 +100,6 @@
                 <canvas id="soilHumidityChart"></canvas>
             </div>
 
-            <div class="chart-card">
-                <h4>Taux de Nutriments (pH)</h4>
-                <canvas id="phLevelChart"></canvas>
-            </div>
         </div>
 
     </section>

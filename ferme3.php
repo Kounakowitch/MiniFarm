@@ -34,32 +34,9 @@
                 <div class="controls-grid">
                     <div class="control-card control-irrigation">
                         <h4><i class="fas fa-water"></i> Système d'Irrigation</h4>
-                        <p>Statut : 
-                            <span id="irrigation-status" class="status good">Automatique</span>
-                        </p>
-                        <div class="toggle-container">
-                            <label class="switch">
-                                <input type="checkbox" id="irrigation-toggle" checked>
-                                <span class="slider round"></span>
-                            </label>
-                            <span id="irrigation-mode-label">Mode Auto ON (Calculé)</span>
-                        </div>
                         <button class="btn-action green-btn" id="manual-irrigation-btn"><i class="fas fa-tint"></i> Arroser 5 min (Manuel)</button>
                     </div>
-                    <div class="control-card control-seeding">
-                        <h4><i class="fas fa-clock"></i> Arrosage Automatique</h4>
-                        <p>Prochain cycle : 
-                            <span id="next-irrigation-time" style="font-weight: 700;">--:--</span>
-                        </p>
-                        <div class="toggle-container">
-                    <label class="switch">
-                        <input type="checkbox" id="seeding-toggle" checked disabled>
-                        <span class="slider round"></span>
-                    </label>
-                    <span id="seeding-mode-label">Déclenchement conditionnel</span>
-                </div>
-                <p class="alert-message" id="irrigation-alert-msg"><i class="fas fa-check-circle"></i> Conditions actuelles optimales.</p>
-            </div>
+                    
             <div class="control-card control-temperature">
                 <h4>
                     <i class="fas fa-thermometer-three-quarters"></i> Conditions Actuelles
@@ -77,45 +54,6 @@
                     <div class="progress-bar" style="width: 45%; background-color: #673AB7;"></div>
                 </div>
                 <p class="progress-label" style="font-size: 0.8em; margin-top: 5px;">Utilisation : Normale</p>
-            </div>
-
-        </div>
-    </section>
-
-    <hr>
-
-    <section class="logistics-stock">
-        <h3>Logistique et Gestion des Stocks de Légumes</h3>
-
-        <div class="logistics-grid">
-
-            <div class="progress-card">
-                <h4><i class="fas fa-carrot"></i> Stock Carottes</h4>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" id="carrot-stock-progress" style="width: 50%;"></div>
-                </div>
-                <p class="progress-label">Niveau: <span id="carrot-stock-value">50</span>%</p>
-                <p class="alert-message danger-text" id="carrot-warning" style="display: none;">
-                    <i class="fas fa-exclamation-circle"></i> **STOCK BAS !** Planifiez de nouveaux semis.
-                </p>
-            </div>
-
-            <div class="progress-card">
-                <h4><i class="fas fa-apple-alt"></i> Stock Tomates</h4>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" id="tomato-stock-progress" style="width: 75%;"></div>
-                </div>
-                <p class="progress-label">Niveau: <span id="tomato-stock-value">75</span>%</p>
-                <p class="alert-message danger-text" id="tomato-warning" style="display: none;"></p>
-            </div>
-
-            <div class="progress-card">
-                <h4><i class="fas fa-leaf"></i> Stock Salades</h4>
-                <div class="progress-bar-container">
-                    <div class="progress-bar" id="salad-stock-progress" style="width: 25%;"></div>
-                </div>
-                <p class="progress-label">Niveau: <span id="salad-stock-value">25</span>%</p>
-                <p class="alert-message danger-text" id="salad-warning" style="display: none;"></p>
             </div>
 
         </div>
@@ -158,3 +96,4 @@ const FARM_ID = 3;
 <script src="script.js"></script>
 </body>
 </html>
+
