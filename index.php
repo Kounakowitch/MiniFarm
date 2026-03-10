@@ -50,6 +50,17 @@
             <article class="farm-card">
                 <h3>Ferme 1 - Les Champs</h3>
                 <p>Statut Général : <span id="general-status" class="status good">Optimal</span></p>
+                <p>Niveau réservoir :</p>
+
+                <p style="display:none;">
+                    niveau : <span id="water_level">--</span>
+                </p>
+
+                <div id="water-bar-container" style="width:100%; background:#ddd; border-radius:5px; height:20px;">
+                    <div id="water-bar" style="height:100%; width:0%; background:#4CAF50; border-radius:5px;"></div>
+                </div>
+
+                <p id="water-alert" style="color:red; display:none;"></p>
                 <ul>
                     <li><i class="fas fa-seedling"></i> Cultures : Avoine, Blé, Orge</li>
                     <li><i class="fas fa-chart-line"></i> Tendance : Rendement Stable (+0.5%)</li>
@@ -95,6 +106,10 @@
     </section>
 
 </main>
+<script>
+const FARM_ID = 1;
+</script>
+
 
 <script src="script.js"></script>
 </body>
