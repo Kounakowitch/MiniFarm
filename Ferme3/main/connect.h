@@ -4,6 +4,7 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include "LCD.h"
+#include "WaterPump.h"
 
 // Déclarations externes (objet global défini dans .cpp)
 extern WiFiClient espClient;
