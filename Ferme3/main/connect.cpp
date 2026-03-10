@@ -2,6 +2,7 @@
 #include "connect.h"
 
 #include "lcd.h"
+#include "WaterPump.h"
 
 // Objets globaux définis ici
 WiFiClient espClient;
@@ -61,6 +62,16 @@ void callback(char* topic, byte* payload, unsigned int length) {
     lastMsg = "";
     Serial.println("LCD réinitialisé");
   }
+  if (String(topic) == "fermes/ferme3/arrosage") {
+    int arrosage = msg.toInt();  // ← toInt() donc compare avec int, pas String
+    Serial.println("arrosage: " + String(arrosage)); // ← correction println
+    if (arrosage == 1) {          // ← enlève les guillemets
+      digitalWrite(RelayPin, HIGH);
+    }
+    else if (arrosage == 0) {     // ← enlève les guillemets
+      digitalWrite(RelayPin, LOW); // ← tu avais HIGH dans les deux cas
+    }
+  }
 }
 
 // ===== RECONNECT =====
@@ -82,6 +93,7 @@ void reconnect() {
       client.subscribe(("fermes/" + FERME_ID + "/water_level_sensor").c_str());
       client.subscribe("fermes/ferme2/cmd");
       client.subscribe("fermes/ferme3/msg");
+      client.subscribe("fermes/ferme3/arrosage");
       
     } else {
       Serial.println(" échec, nouvel essai dans 3s...");
