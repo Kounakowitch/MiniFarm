@@ -60,8 +60,6 @@
         </div>
     </section>
 
-    <hr>
-
 
     <div id="seeding-modal" class="modal">
         <div class="modal-content">
