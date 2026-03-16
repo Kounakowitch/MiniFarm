@@ -62,7 +62,7 @@
 
             <article class="farm-card status-2">
                 <h3>Ferme 2 - Les Pâtures</h3>
-                <p>Statut Général : <span id="sheep_count" ></span> / 10</p></p>
+                <p>Statut Général - Nombre de moutons : <span id="sheep_count" ></span> / 10</p></p>
                 <ul>
                     <li><i class="fas fa-leaf"></i> Elevage : Pâturage, Foin</li>
                 </ul>
@@ -84,7 +84,7 @@
 
             <article class="farm-card status-4">
                 <h3>Ferme 4 - L'Étable</h3>
-                <p>Statut Général : <span id="sheep_count_farm4">--</span> / 10</p>
+                <p>Statut Général - Nombre de moutons :<span id="sheep_count_farm4">--</span> / 10</p>
                 <ul>
                     <li><i class="fas fa-cow"></i> Élevage : Moutons</li>
                 </ul>
