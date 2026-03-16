@@ -56,7 +56,6 @@
                 <p id="water-alert" style="color:red; display:none;"></p>
                 <ul>
                     <li><i class="fas fa-seedling"></i> Cultures : Avoine, Blé, Orge</li>
-                    <li><i class="fas fa-chart-line"></i> Tendance : Rendement Stable (+0.5%)</li>
                     <li><i class="fas fa-bolt"></i> Consommation Énergie : 45 kWh</li>
                 </ul>
                 <a href="ferme1.php" class="btn-detail">Accéder au Dashboard</a>
@@ -64,10 +63,9 @@
 
             <article class="farm-card status-2">
                 <h3>Ferme 2 - Les Pâtures</h3>
-                <p>Statut Général : <span class="status warning">Alerte Humidité</span></p>
+                <p>Statut Général : <span id="sheep_count" ></span> / 10</p></p>
                 <ul>
                     <li><i class="fas fa-leaf"></i> Cultures : Pâturage, Foin</li>
-                    <li><i class="fas fa-chart-line"></i> Tendance : Légère Baisse (-1.2%)</li>
                     <li><i class="fas fa-wrench"></i> Maintenance Requise : Oui</li>
                 </ul>
                 <a href="ferme2.php" class="btn-detail warning-btn">Accéder au Dashboard</a>
@@ -78,7 +76,6 @@
                 <p>Statut Général : <span class="status danger">Urgence Chaleur</span></p>
                 <ul>
                     <li><i class="fas fa-carrot"></i> Cultures : Carottes, Tomates, Salades</li>
-                    <li><i class="fas fa-chart-area"></i> Tendance : Forte Baisse (-3.5%)</li>
                     <li><i class="fas fa-fire"></i> Niveau d'Alarme : Élevé</li>
                 </ul>
                 <a href="ferme3.php" class="btn-detail danger-btn">Accéder au Dashboard</a>
