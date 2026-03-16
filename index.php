@@ -71,7 +71,11 @@
 
             <article class="farm-card status-3">
                 <h3>Ferme 3 - Le Potager</h3>
-                <p>Statut Général : <span id="water_level_farm3">--</span></p>
+                <p>Statut Général - Niveau réservoir :</p>
+
+                <div style="width:100%; background:#ddd; border-radius:5px; height:15px;">
+                    <div id="water-bar-farm3" style="height:100%; width:0%; background:#4CAF50; border-radius:5px;"></div>
+                </div>
                 <ul>
                     <li><i class="fas fa-carrot"></i> Cultures : Carottes, Tomates, Salades</li>
                 </ul>
@@ -142,15 +146,26 @@ fetch("api_data.php?farm=2")
 // =======================
 // FERME 3
 // =======================
-
 fetch("api_data.php?farm=3")
 .then(r => r.json())
 .then(data => {
 
-    const water3 = document.getElementById("water_level_farm3");
+    const value = data.water_level ?? null;
 
-    if(water3){
-        water3.textContent = data.water_level ?? "--";
+    if(value !== null){
+
+        const min = 0;
+        const max = 4095;
+
+        let percent = ((value - min) / (max - min)) * 100;
+        percent = Math.max(0, Math.min(100, percent));
+
+        const bar = document.getElementById("water-bar-farm3");
+
+        if(bar){
+            bar.style.width = percent + "%";
+        }
+
     }
 
 });
