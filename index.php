@@ -62,14 +62,14 @@
                 <h3>Ferme 2 - Les Pâtures</h3>
                 <p>Statut Général : <span id="sheep_count" ></span> / 10</p></p>
                 <ul>
-                    <li><i class="fas fa-leaf"></i> Cultures : Pâturage, Foin</li>
+                    <li><i class="fas fa-leaf"></i> Elevage : Pâturage, Foin</li>
                 </ul>
                 <a href="ferme2.php" class="btn-detail warning-btn">Accéder au Dashboard</a>
             </article>
 
             <article class="farm-card status-3">
                 <h3>Ferme 3 - Le Potager</h3>
-                <p>Statut Général : <span class="status danger">Urgence Chaleur</span></p>
+                <p>Statut Général : <span id="water_level_farm3">--</span></p>
                 <ul>
                     <li><i class="fas fa-carrot"></i> Cultures : Carottes, Tomates, Salades</li>
                 </ul>
@@ -78,7 +78,7 @@
 
             <article class="farm-card status-4">
                 <h3>Ferme 4 - L'Étable</h3>
-                <p>Statut Général : <span class="status info">Maintenance Prévue</span></p>
+                <p>Statut Général : <span id="sheep_count_farm4">--</span> / 10</p>
                 <ul>
                     <li><i class="fas fa-cow"></i> Élevage : Moutons</li>
                 </ul>
@@ -90,10 +90,75 @@
 
 </main>
 <script>
-const FARM_ID = 1;
+
+// =======================
+// FERME 1
+// =======================
+
+fetch("api_data.php?farm=1")
+.then(r => r.json())
+.then(data => {
+
+    const water = document.getElementById("water_level");
+
+    if(water){
+        water.textContent = data.water_level ?? "--";
+    }
+
+});
+
+
+// =======================
+// FERME 2
+// =======================
+
+fetch("api_data.php?farm=2")
+.then(r => r.json())
+.then(data => {
+
+    const sheep = document.getElementById("sheep_count");
+
+    if(sheep){
+        sheep.textContent = data.sheep_count ?? 0;
+    }
+
+});
+
+
+// =======================
+// FERME 3
+// =======================
+
+fetch("api_data.php?farm=3")
+.then(r => r.json())
+.then(data => {
+
+    const water3 = document.getElementById("water_level_farm3");
+
+    if(water3){
+        water3.textContent = data.water_level ?? "--";
+    }
+
+});
+
+
+// =======================
+// FERME 4
+// =======================
+
+fetch("api_data.php?farm=4")
+.then(r => r.json())
+.then(data => {
+
+    const sheep4 = document.getElementById("sheep_count_farm4");
+
+    if(sheep4){
+        sheep4.textContent = data.sheep_count ?? 0;
+    }
+
+});
+
 </script>
 
-
-<script src="script.js"></script>
 </body>
 </html>
