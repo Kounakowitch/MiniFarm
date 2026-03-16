@@ -85,7 +85,7 @@
                 <h3>Ferme 4 - L'Étable</h3>
                 <p>Statut Général : <span class="status info">Maintenance Prévue</span></p>
                 <ul>
-                    <li><i class="fas fa-cow"></i> Élevage : Bovins, Volailles</li>
+                    <li><i class="fas fa-cow"></i> Élevage : Moutons</li>
                     <li><i class="fas fa-user-friends"></i> Personnel : 3 Présents</li>
                     <li><i class="fas fa-truck"></i> Logistique : Livraison en attente</li>
                 </ul>

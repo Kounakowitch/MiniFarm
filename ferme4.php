@@ -52,6 +52,16 @@
                 <p class="alert-message warning-text" id="feeding-alert-msg"><i class="fas fa-clock"></i> En attente du prochain cycle.</p>
             </div>
 
+            <div class="control-card control-gate">
+                <h4><i class="fas fa-door-open"></i> Barrière pâture</h4>
+
+                <div class="toggle-container" style="margin-bottom: 15px;">
+                    <button class="btn-action green-btn" id="manual-barrière-btn4"><i class="fas fa-tint"></i> Ouvrir Barrière Pâturage </button>
+                </div>
+
+                <p class="alert-message warning-text" id="feeding-alert-msg"><i class="fas fa-clock"></i> En attente du prochain cycle.</p>
+            </div>
+
             <div class="control-card control-sheep-status">
                 <h4><i class="fas fa-sheep"></i> Statut des Animaux</h4>
                 <p>Moutons à l'Étable : <span id="sheep_count" ></span> / 10</p>
