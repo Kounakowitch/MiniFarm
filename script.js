@@ -219,14 +219,6 @@ console.error("Erreur API :", error);
 
 }
 
-
-// =======================
-// LANCEMENT
-// =======================
-
-fetchDataFromAPI();
-
-setInterval(fetchDataFromAPI, 2000);
 // =======================
 // DONNÉES FERME 2 (moutons pour dashboard accueil)
 // =======================
@@ -247,6 +239,14 @@ if (sheepElement) {
     });
 
 }
+// =======================
+// LANCEMENT
+// =======================
+
+fetchDataFromAPI();
+
+setInterval(fetchDataFromAPI, 2000);
+
 
 // BOUTON 1 - Arrosage ferme3
 let pompeActive = false;
