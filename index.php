@@ -49,12 +49,11 @@
 
             <article class="farm-card">
                 <h3>Ferme 1 - Les Champs</h3>
-                <p>Statut Général :  <span id="water_level">--</span></p>
+                <p>Statut Général :  <span id="water_level"></span></p>
 
                 <p id="water-alert" style="color:red; display:none;"></p>
                 <ul>
                     <li><i class="fas fa-seedling"></i> Cultures : Avoine, Blé, Orge</li>
-                    <li><i class="fas fa-bolt"></i> Consommation Énergie : 45 kWh</li>
                 </ul>
                 <a href="ferme1.php" class="btn-detail">Accéder au Dashboard</a>
             </article>
@@ -64,7 +63,6 @@
                 <p>Statut Général : <span id="sheep_count" ></span> / 10</p></p>
                 <ul>
                     <li><i class="fas fa-leaf"></i> Cultures : Pâturage, Foin</li>
-                    <li><i class="fas fa-wrench"></i> Maintenance Requise : Oui</li>
                 </ul>
                 <a href="ferme2.php" class="btn-detail warning-btn">Accéder au Dashboard</a>
             </article>
@@ -74,7 +72,6 @@
                 <p>Statut Général : <span class="status danger">Urgence Chaleur</span></p>
                 <ul>
                     <li><i class="fas fa-carrot"></i> Cultures : Carottes, Tomates, Salades</li>
-                    <li><i class="fas fa-fire"></i> Niveau d'Alarme : Élevé</li>
                 </ul>
                 <a href="ferme3.php" class="btn-detail danger-btn">Accéder au Dashboard</a>
             </article>
@@ -84,8 +81,6 @@
                 <p>Statut Général : <span class="status info">Maintenance Prévue</span></p>
                 <ul>
                     <li><i class="fas fa-cow"></i> Élevage : Moutons</li>
-                    <li><i class="fas fa-user-friends"></i> Personnel : 3 Présents</li>
-                    <li><i class="fas fa-truck"></i> Logistique : Livraison en attente</li>
                 </ul>
                 <a href="ferme4.php" class="btn-detail info-btn">Accéder au Dashboard</a>
             </article>
