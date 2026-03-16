@@ -26,7 +26,6 @@
 
     <section class="live-data-summary">
         <h2>Conditions Météo et Capteurs (Mise à Jour Automatique)</h2>
-        <p class="data-last-update">Dernière mise à jour : <span id="last-update-time">--:--:--</span></p>
 
         <div class="data-cards-grid">
             <div class="data-card"><i class="fas fa-thermometer-half"></i> Température: <span id="temp-global"></span>°C</div>
@@ -49,7 +48,10 @@
 
             <article class="farm-card">
                 <h3>Ferme 1 - Les Champs</h3>
-                <p>Statut Général :  <span id="water_level"></span></p>
+                <p>Statut Général :  <p>Niveau réservoir :</p>
+                <div style="width:100%; background:#ddd; border-radius:5px; height:15px;">
+                    <div id="water-bar-index" style="height:100%; width:0%; background:#4CAF50; border-radius:5px;"></div>
+                </div>
 
                 <p id="water-alert" style="color:red; display:none;"></p>
                 <ul>
@@ -99,10 +101,22 @@ fetch("api_data.php?farm=1")
 .then(r => r.json())
 .then(data => {
 
-    const water = document.getElementById("water_level");
+    const value = data.water_level ?? null;
 
-    if(water){
-        water.textContent = data.water_level ?? "--";
+    if(value !== null){
+
+        const min = 0;
+        const max = 4095;
+
+        let percent = ((value - min) / (max - min)) * 100;
+        percent = Math.max(0, Math.min(100, percent));
+
+        const bar = document.getElementById("water-bar-index");
+
+        if(bar){
+            bar.style.width = percent + "%";
+        }
+
     }
 
 });
