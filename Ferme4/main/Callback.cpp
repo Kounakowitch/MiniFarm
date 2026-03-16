@@ -1,4 +1,5 @@
 #include "connect.h"
+#include "servo.h"
 
 void publishCountF4() {
   String topic = "fermes/" + FERME_ID + "/count-sheep";
@@ -64,4 +65,18 @@ void callback(char* topic, byte* payload, unsigned int length) {
       Serial.println("LED allumée");
     }
   }
+
+  // gestion de la trappe depuis le site
+  if (String(topic) == "fermes/ferme4/trap") {
+    if (msg == "1") {
+      if (!trappeOuverte) {
+        ouvrirTrappe = true;
+      }
+    } else {
+      if (trappeOuverte) {
+        fermerTrappe = true;
+      }
+    }
+  }
+
 }

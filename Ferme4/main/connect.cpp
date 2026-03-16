@@ -43,6 +43,7 @@ void reconnect() {
       client.subscribe("fermes/ferme2/cmd");
       client.subscribe("fermes/ferme2/count-sheep");
       client.subscribe("fermes/ferme4/LED");
+      client.subscribe("fermes/ferme4/trap");
       Serial.println("Abonnements OK");
     } else {
       Serial.println(" échec, nouvel essai dans 3s...");
