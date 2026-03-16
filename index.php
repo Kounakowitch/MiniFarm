@@ -48,7 +48,7 @@
 
             <article class="farm-card">
                 <h3>Ferme 1 - Les Champs</h3>
-                <p>Statut Général :  <p>Niveau réservoir :</p>
+                <p>Statut Général - Niveau réservoir :</p>
                 <div style="width:100%; background:#ddd; border-radius:5px; height:15px;">
                     <div id="water-bar-index" style="height:100%; width:0%; background:#4CAF50; border-radius:5px;"></div>
                 </div>
