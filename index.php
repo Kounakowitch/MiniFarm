@@ -49,10 +49,8 @@
 
             <article class="farm-card">
                 <h3>Ferme 1 - Les Champs</h3>
-                <p>Statut Général : <span id="general-status" class="status good"></span></p>
-                <p style="display:none;">
-                    niveau : <span id="water_level">--</span>
-                </p>
+                <p>Statut Général :  <span id="water_level">--</span></p>
+
                 <p id="water-alert" style="color:red; display:none;"></p>
                 <ul>
                     <li><i class="fas fa-seedling"></i> Cultures : Avoine, Blé, Orge</li>

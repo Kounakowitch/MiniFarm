@@ -227,6 +227,26 @@ console.error("Erreur API :", error);
 fetchDataFromAPI();
 
 setInterval(fetchDataFromAPI, 2000);
+// =======================
+// DONNÉES FERME 2 (moutons pour dashboard accueil)
+// =======================
+
+const sheepElement = document.getElementById("sheep_count");
+
+if (sheepElement) {
+
+    fetch("api_data.php?farm=2")
+    .then(response => response.json())
+    .then(data => {
+
+        sheepElement.textContent = data.sheep_count ?? 0;
+
+    })
+    .catch(error => {
+        console.error("Erreur récupération moutons :", error);
+    });
+
+}
 
 // BOUTON 1 - Arrosage ferme3
 let pompeActive = false;
