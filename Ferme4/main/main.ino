@@ -2,6 +2,7 @@
 #include "waterlevel.h"
 #include "ultrasonic.h"
 #include "humidity_temperature.h"
+#include "servo.h"
 
 // intervalle pour envoi data capteurs
 unsigned long lastSend = 0;
@@ -13,6 +14,7 @@ void setup() {
   Serial.println("--- F4 DEMARRE ---");
   setup_LCD();
   setup_LED();
+  initServo();
   setup_wifi();
   client.setServer(mqtt_server, mqtt_port);
   client.setCallback(callback);
@@ -46,4 +48,17 @@ void loop() {
     ledActive = false;
     Serial.println("LED éteinte");
   }
+
+  
+  // gestion de la trappe depuis le site
+  if (ouvrirTrappe == true) {
+    openTrappe();
+    ouvrirTrappe = false;
+  }
+  if (fermerTrappe == true) {
+    closeTrappe();
+    fermerTrappe = false;
+  }
+
+
 }

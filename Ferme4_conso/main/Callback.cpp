@@ -1,6 +1,18 @@
 #include "connect.h"
 #include "servo.h"
 
+
+
+
+
+// --- Dans connect.h (à la fin des variables externes) ---
+extern float e_total_esp;
+extern float e_total_dht;
+extern float e_total_servo;
+extern float e_total_led; // Si tu veux aussi la LED
+extern unsigned long lastTick;
+extern unsigned long startTime;
+
 void publishCountF4() {
   String topic = "fermes/" + FERME_ID + "/count-sheep";
   client.publish(topic.c_str(), String(countF4).c_str());
