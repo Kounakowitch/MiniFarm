@@ -42,9 +42,22 @@ if (document.getElementById("steam_sensor")) {
 // HUMIDITÉ SOL
 // =======================
 
-if(document.getElementById("soil_humidity"))
-document.getElementById("soil_humidity").textContent =
-data.soil_humidity ?? "--";
+if (document.getElementById("soil_humidity")) {
+
+    const value = data.soil_humidity ?? null;
+
+    if (value !== null) {
+
+        const min = 0;
+        const max = 4095; // adapte si besoin (1023 ou autre)
+
+        let percent = ((value - min) / (max - min)) * 100;
+        percent = Math.max(0, Math.min(100, percent));
+
+        document.getElementById("soil_humidity").textContent =
+            percent.toFixed(1); // 1 chiffre après la virgule
+    }
+}
 
 
 // =======================
